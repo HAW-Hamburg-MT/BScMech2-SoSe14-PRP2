@@ -4,15 +4,20 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BScMech1-SoSe14-PRP2.xcscheme</key>
+		<key>PRP2-A1.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>2F6E2EC718D8A59700BE08FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2F6E2ED818D8A60900BE08FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

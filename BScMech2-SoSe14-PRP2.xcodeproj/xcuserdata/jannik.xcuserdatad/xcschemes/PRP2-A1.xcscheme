@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2F6E2EC718D8A59700BE08FC"
-               BuildableName = "BScMech1-SoSe14-PRP2"
-               BlueprintName = "BScMech1-SoSe14-PRP2"
-               ReferencedContainer = "container:BScMech1-SoSe14-PRP2.xcodeproj">
+               BlueprintIdentifier = "2F6E2ED818D8A60900BE08FC"
+               BuildableName = "PRP2-A1"
+               BlueprintName = "PRP2-A1"
+               ReferencedContainer = "container:BScMech2-SoSe14-PRP2.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2F6E2EC718D8A59700BE08FC"
-            BuildableName = "BScMech1-SoSe14-PRP2"
-            BlueprintName = "BScMech1-SoSe14-PRP2"
-            ReferencedContainer = "container:BScMech1-SoSe14-PRP2.xcodeproj">
+            BlueprintIdentifier = "2F6E2ED818D8A60900BE08FC"
+            BuildableName = "PRP2-A1"
+            BlueprintName = "PRP2-A1"
+            ReferencedContainer = "container:BScMech2-SoSe14-PRP2.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +51,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2F6E2EC718D8A59700BE08FC"
-            BuildableName = "BScMech1-SoSe14-PRP2"
-            BlueprintName = "BScMech1-SoSe14-PRP2"
-            ReferencedContainer = "container:BScMech1-SoSe14-PRP2.xcodeproj">
+            BlueprintIdentifier = "2F6E2ED818D8A60900BE08FC"
+            BuildableName = "PRP2-A1"
+            BlueprintName = "PRP2-A1"
+            ReferencedContainer = "container:BScMech2-SoSe14-PRP2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "2F6E2EC718D8A59700BE08FC"
-            BuildableName = "BScMech1-SoSe14-PRP2"
-            BlueprintName = "BScMech1-SoSe14-PRP2"
-            ReferencedContainer = "container:BScMech1-SoSe14-PRP2.xcodeproj">
+            BlueprintIdentifier = "2F6E2ED818D8A60900BE08FC"
+            BuildableName = "PRP2-A1"
+            BlueprintName = "PRP2-A1"
+            ReferencedContainer = "container:BScMech2-SoSe14-PRP2.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
