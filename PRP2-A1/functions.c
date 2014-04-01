@@ -19,6 +19,7 @@
 #include "mycbw.h"  // ONLY FOR TESTING
 //#include "cbw.h"
 
+typedef unsigned short int Byte;
 
 Image actorsImage = 0x0000;
 Image sensorsImage = 0x0000;
