@@ -4,7 +4,7 @@
  *
  * Created on 14. Februar 2014, 11:42
  *
- * correctes on 01.04.2014, 17:10 by Jannik Beyerstedt
+ * corrections on 01.04.2014, 17:10 by Jannik Beyerstedt
  */
 
 #ifndef MYCBW_H

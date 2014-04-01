@@ -59,6 +59,3 @@ void changeSensors() {
     printf("Define new port CH: ");
     scanf("%hx", &portch);
 }
-
-
-
