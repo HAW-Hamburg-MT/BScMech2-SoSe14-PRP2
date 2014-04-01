@@ -3,6 +3,8 @@
  * Author: Reinhard
  *
  * Created on 14. Februar 2014, 11:42
+ *
+ * correctes on 01.04.2014, 17:10 by Jannik Beyerstedt
  */
 
 #ifndef MYCBW_H
@@ -15,7 +17,7 @@ extern "C" {
 #include <stdio.h>
 #include <stdlib.h>
 
-#define BNR 0
+//#define BNR 0
 #define FIRSTPORTA 0
 #define FIRSTPORTB 1
 #define FIRSTPORTCL 2
@@ -24,7 +26,7 @@ extern "C" {
 #define DIGITALIN 1
 
 
-    typedef unsigned char Byte;
+    typedef unsigned short int Byte;
 
     void cbDConfigPort(Byte boardnummer, Byte port, Byte dir);
     void cbDOut(Byte boardnummer, Byte port, Byte value);

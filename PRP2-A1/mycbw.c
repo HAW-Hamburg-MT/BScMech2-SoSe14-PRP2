@@ -55,9 +55,9 @@ void cbDIn(Byte boardnummer, Byte port, Byte *value) {
 void changeSensors() {
     printf("\nchangeSensors\n");
     printf("Define new port B : ");
-    scanf("%x", &portb);
+    scanf("%hx", &portb);
     printf("Define new port CH: ");
-    scanf("%x", &portch);
+    scanf("%hx", &portch);
 }
 
 
