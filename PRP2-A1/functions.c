@@ -16,8 +16,8 @@
  */
 
 #include "functions.h"
-#include "mycbw.h"  // ONLY FOR TESTING
-//#include "cbw.h"
+//#include "mycbw.h"  // ONLY FOR TESTING
+#include "cbw.h"
 
 typedef unsigned short int Byte;
 

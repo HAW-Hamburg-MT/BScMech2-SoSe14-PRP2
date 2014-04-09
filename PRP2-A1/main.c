@@ -18,13 +18,14 @@
 #include <stdio.h>
 #include "functions.h"
 
-#include "mycbw.h"  // ONLY FOR TESTING
+//#include "mycbw.h"  // ONLY FOR TESTING
 
 
 void excercise (int *exitVariable) {
     
     char option;
     printf("choose option (a - l) :");
+    fflush(stdin);
     scanf("%c", &option);
     
     switch (option) {
@@ -97,7 +98,7 @@ int main()
     int inputOptionsExit = 1;
     
     while (1) {
-        changeSensors(); // for debugging without real system
+        //changeSensors(); // for debugging without real system
         
         updateProcessImage();
         

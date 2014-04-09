@@ -1,5 +1,6 @@
-build/Debug/MinGW-Windows/functions.o: functions.c functions.h mycbw.h
+build/Debug/MinGW-Windows/functions.o: functions.c functions.h \
+ c:/Festo/lib/cbw.h
 
 functions.h:
 
-mycbw.h:
+c:/Festo/lib/cbw.h:

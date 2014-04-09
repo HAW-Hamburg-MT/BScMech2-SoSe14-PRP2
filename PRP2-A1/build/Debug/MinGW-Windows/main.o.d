@@ -1,5 +1,3 @@
-build/Debug/MinGW-Windows/main.o: main.c functions.h mycbw.h
+build/Debug/MinGW-Windows/main.o: main.c functions.h
 
 functions.h:
-
-mycbw.h:
