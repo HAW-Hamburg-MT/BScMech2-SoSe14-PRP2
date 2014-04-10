@@ -3,7 +3,7 @@
  * project: BScMech2-SoSe14-PRP2
  * version: 1.0 (01.04.2014 18:00)
  * - 0.9 first Version (not tested with real machine)
- * - 1.0 stable and tested
+ * - 1.0 stable and tested for PRP2-A1
  *
  *
  * Created by Jannik Beyerstedt
@@ -23,7 +23,7 @@
 
 #define BNR 0
 
-#define E_SAVE 0x288     // motorStop + Light_RD + LED_Reset - evtl 0x298 (junction open)
+#define E_SAVE 0x088     // motorStop + Light_RD
 #define MASK_01  0x510   // bitmask for sensors which are only relevant when switchning from 0 -> 1
 #define MASK_10  0x28f   // bitmask for sensors which are only relevant when switchning from 1 -> 0
 #define MASK_ALL 0x8eb60 // bitmask for sensors which are relevant in all states
