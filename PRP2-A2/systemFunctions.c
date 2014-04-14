@@ -4,6 +4,7 @@
  * version: 1.0 (01.04.2014 18:00)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
+ * - 1.1 motor safety added
  *
  *
  * Created by Jannik Beyerstedt

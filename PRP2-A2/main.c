@@ -40,6 +40,7 @@ int main() {
         } else {
             // code for normal execution HERE
             
+            // TODO: something with the stateMachine
         }
         
         applyProcessToOutput();
