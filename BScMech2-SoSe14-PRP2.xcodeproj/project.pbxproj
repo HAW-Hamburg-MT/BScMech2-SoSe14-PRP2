@@ -11,6 +11,10 @@
 		2F6E2EDC18D8A60900BE08FC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E2EDB18D8A60900BE08FC /* main.c */; };
 		2F6E2EDE18D8A60900BE08FC /* PRP2_A1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F6E2EDD18D8A60900BE08FC /* PRP2_A1.1 */; };
 		2F6E2EE418D8A64000BE08FC /* mycbw.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E2EE218D8A64000BE08FC /* mycbw.c */; };
+		2FD31FCB18FBD19300A8048A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FD31FBB18FBD19300A8048A /* main.c */; };
+		2FD31FCF18FBD2AF00A8048A /* systemFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FD31FCE18FBD2AF00A8048A /* systemFunctions.c */; };
+		2FD31FD218FBD3F300A8048A /* mycbw.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FD31FD018FBD3F300A8048A /* mycbw.c */; };
+		2FD31FD518FBD4C500A8048A /* stateMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FD31FD418FBD4C500A8048A /* stateMachine.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,6 +48,13 @@
 		2F6E2EE218D8A64000BE08FC /* mycbw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mycbw.c; sourceTree = "<group>"; };
 		2F6E2EE318D8A64000BE08FC /* mycbw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mycbw.h; sourceTree = "<group>"; };
 		2F854FD418FA81B20029EB14 /* PRP2-A2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PRP2-A2"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FD31FBB18FBD19300A8048A /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		2FD31FCD18FBD29F00A8048A /* systemFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = systemFunctions.h; sourceTree = "<group>"; };
+		2FD31FCE18FBD2AF00A8048A /* systemFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = systemFunctions.c; sourceTree = "<group>"; };
+		2FD31FD018FBD3F300A8048A /* mycbw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mycbw.c; sourceTree = "<group>"; };
+		2FD31FD118FBD3F300A8048A /* mycbw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mycbw.h; sourceTree = "<group>"; };
+		2FD31FD318FBD4BC00A8048A /* stateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stateMachine.h; sourceTree = "<group>"; };
+		2FD31FD418FBD4C500A8048A /* stateMachine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stateMachine.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +78,7 @@
 		2F6E2EBF18D8A59700BE08FC = {
 			isa = PBXGroup;
 			children = (
+				2FD31FBA18FBD19300A8048A /* PRP2-A2 */,
 				2F6E2EDA18D8A60900BE08FC /* PRP2-A1 */,
 				2F6E2EC918D8A59700BE08FC /* Products */,
 			);
@@ -84,14 +96,28 @@
 		2F6E2EDA18D8A60900BE08FC /* PRP2-A1 */ = {
 			isa = PBXGroup;
 			children = (
-				2F6E2EE218D8A64000BE08FC /* mycbw.c */,
-				2F6E2EE318D8A64000BE08FC /* mycbw.h */,
 				2F6E2EDB18D8A60900BE08FC /* main.c */,
-				2F51804918D9A500002701AC /* functions.c */,
 				2F51804B18D9A51E002701AC /* functions.h */,
+				2F51804918D9A500002701AC /* functions.c */,
+				2F6E2EE318D8A64000BE08FC /* mycbw.h */,
+				2F6E2EE218D8A64000BE08FC /* mycbw.c */,
 				2F6E2EDD18D8A60900BE08FC /* PRP2_A1.1 */,
 			);
 			path = "PRP2-A1";
+			sourceTree = "<group>";
+		};
+		2FD31FBA18FBD19300A8048A /* PRP2-A2 */ = {
+			isa = PBXGroup;
+			children = (
+				2FD31FBB18FBD19300A8048A /* main.c */,
+				2FD31FCD18FBD29F00A8048A /* systemFunctions.h */,
+				2FD31FCE18FBD2AF00A8048A /* systemFunctions.c */,
+				2FD31FD318FBD4BC00A8048A /* stateMachine.h */,
+				2FD31FD418FBD4C500A8048A /* stateMachine.c */,
+				2FD31FD018FBD3F300A8048A /* mycbw.c */,
+				2FD31FD118FBD3F300A8048A /* mycbw.h */,
+			);
+			path = "PRP2-A2";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +199,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FD31FD218FBD3F300A8048A /* mycbw.c in Sources */,
+				2FD31FD518FBD4C500A8048A /* stateMachine.c in Sources */,
+				2FD31FCF18FBD2AF00A8048A /* systemFunctions.c in Sources */,
+				2FD31FCB18FBD19300A8048A /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +343,7 @@
 				2F854FDC18FA81B20029EB14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

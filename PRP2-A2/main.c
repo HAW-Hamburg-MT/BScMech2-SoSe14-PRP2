@@ -1,18 +1,49 @@
-/* 
- * File:   main.c
- * Author: jannik
+/*
+ * file: main.c
+ * project: BScMech2-SoSe14-PRP2
+ * version: 0.1 (14.04.2014 10:00)
  *
- * Created on 13. April 2014, 10:29
+ *
+ * Created by Jannik Beyerstedt
+ * jannik.beyerstedt.de
+ * Copyright: all code under creative commons licence: CC BY-NC-SA 3.0
+ *
+ *
+ * HAW Hamburg - Labor Programmieren 2
+ * festo conveyor belt system - excercise 2
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
- * 
- */
-int main(int argc, char** argv) {
+#include "systemFunctions.h"
+#include "stateMachine.h"
 
+//#include "mycbw.h"  // ONLY FOR TESTING
+
+
+int main() {
+    initializeSystem();
+    resetOutputs();
+    updateProcessImage(); // set inital sensor Values
+    
+    int inputOptionsExit = 1;
+    
+    while (1) {
+        //changeSensors(); // for debugging without real system
+        
+        updateProcessImage();
+        
+        // Emergency function
+        if (isBitNotSet(ESTOP)) {
+            resetOutputs();
+        } else {
+            // code for normal execution HERE
+            
+        }
+        
+        applyProcessToOutput();
+    }
     return (EXIT_SUCCESS);
 }
 
