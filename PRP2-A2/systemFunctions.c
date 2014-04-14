@@ -1,7 +1,7 @@
 /*
  * file: systemFunctions.h
  * project: BScMech2-SoSe14-PRP2
- * version: 1.0 (01.04.2014 18:00)
+ * version: 1.1 (14.04.2014 21:30)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
  * - 1.1 motor safety added
@@ -17,7 +17,7 @@
  */
 
 #include <stdio.h>
-#include "functions.h"
+#include "systemFunctions.h"
 #include "mycbw.h"  // ONLY FOR TESTING
 //#include "cbw.h"
 

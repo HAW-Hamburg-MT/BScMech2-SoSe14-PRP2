@@ -27,7 +27,7 @@ int main() {
     resetOutputs();
     updateProcessImage(); // set inital sensor Values
     
-    int inputOptionsExit = 1;
+    States machineStates;
     
     while (1) {
         //changeSensors(); // for debugging without real system
@@ -35,13 +35,14 @@ int main() {
         updateProcessImage();
         
         // Emergency function
-        if (isBitNotSet(ESTOP)) {
+        if (isBitNotSet(BUT_ESTOP)) {
             resetOutputs();
         } else {
             // code for normal execution HERE
             
-            // TODO: something with the stateMachine
-        }
+            theMachine(&machineStates);
+            
+        }// END EMERGENCY
         
         applyProcessToOutput();
     }

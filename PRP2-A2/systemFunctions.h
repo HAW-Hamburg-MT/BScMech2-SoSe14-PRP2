@@ -1,7 +1,7 @@
 /*
  * file: systemFunctions.h
  * project: BScMech2-SoSe14-PRP2
- * version: 1.0 (01.04.2014 18:00)
+ * version: 1.1 (14.04.2014 21:30)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
  * - 1.1 motor safety added
@@ -16,15 +16,12 @@
  * festo conveyor belt system - system functions library
  */
 
-
 #ifndef BScMech2_SoSe14_PRP2_systemFunctions_h
 #define BScMech2_SoSe14_PRP2_systemFunctions_h
 
-#include <stdio.h>
-
 #define BNR 0
 
-#define E_SAVE 0x088     // motorStop + Light_RD
+#define E_SAVE 0x088      // safe/ reset actors state (motorStop + Light_RD)
 
 // bitmasks for actors and sensors
 #define MOTOR_R    0x0001
@@ -42,16 +39,16 @@
 
 #define POS_IN     0x0001 // NC: light barrier
 #define POS_HEIGHT 0x0002 // NC: light barrier
-#define HEIGHT_OK  0x0004 // NO: closed if height is in range
+#define SNS_HEIGHT 0x0004 // NO: closed if height is in range
 #define POS_JUNCT  0x0008 // NC: light barrier
-#define METAL_ST   0x0010 // NO: closed if metal detected
-#define JUNCT_ST   0x0020 // NO: closed if junction open
-#define SLIDE_ST   0x0040 // NC: light barrier - open if slide is full
+#define SNS_METAL  0x0010 // NO: closed if metal detected
+#define SNS_JUNCT  0x0020 // NO: closed if junction open
+#define SNS_SLIDE  0x0040 // NC: light barrier - open if slide is full
 #define POS_OUT    0x0080 // NC: light barrier
-#define START      0x0100 // NO
-#define STOP       0x0200 // NC
-#define RESET      0x0400 // NO
-#define ESTOP      0x0800 // NC: emergency stop is NC
+#define BUT_START  0x0100 // NO
+#define BUT_STOP   0x0200 // NC
+#define BUT_RESET  0x0400 // NO
+#define BUT_ESTOP  0x0800 // NC: emergency stop is NC
 
 // 0101.0011.0100 mask for all NO sensors
 #define SENSORS_NO 0x0534
@@ -80,8 +77,6 @@ void resetOutputs ();               // sets all actors to a save value and write
 
 int isBitSet (Image mask);          // DEPRICATED: gets bitmask, checks if these bits are set in process
 int isBitNotSet (Image mask);       // DEPRICATED: gets bitmask, checks if all bits are not set process (IS NEEDED)
-int hasBitChanged01 (Image mask);   // DEPRICATED: gets bitmask, checks if all bits changed from 0 to 1
-int hasBitChanged10 (Image mask);   // DEPRICATED: gets bitmask, checks if all bits changed from 1 to 0
 
 
 #endif

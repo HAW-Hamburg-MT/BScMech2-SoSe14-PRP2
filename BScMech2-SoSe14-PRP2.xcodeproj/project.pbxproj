@@ -110,10 +110,10 @@
 			isa = PBXGroup;
 			children = (
 				2FD31FBB18FBD19300A8048A /* main.c */,
-				2FD31FCD18FBD29F00A8048A /* systemFunctions.h */,
-				2FD31FCE18FBD2AF00A8048A /* systemFunctions.c */,
 				2FD31FD318FBD4BC00A8048A /* stateMachine.h */,
 				2FD31FD418FBD4C500A8048A /* stateMachine.c */,
+				2FD31FCD18FBD29F00A8048A /* systemFunctions.h */,
+				2FD31FCE18FBD2AF00A8048A /* systemFunctions.c */,
 				2FD31FD018FBD3F300A8048A /* mycbw.c */,
 				2FD31FD118FBD3F300A8048A /* mycbw.h */,
 			);
