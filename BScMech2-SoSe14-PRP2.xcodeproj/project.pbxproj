@@ -24,6 +24,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		2F854FD218FA81B20029EB14 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -34,10 +43,18 @@
 		2F6E2EDD18D8A60900BE08FC /* PRP2_A1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = PRP2_A1.1; sourceTree = "<group>"; };
 		2F6E2EE218D8A64000BE08FC /* mycbw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mycbw.c; sourceTree = "<group>"; };
 		2F6E2EE318D8A64000BE08FC /* mycbw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mycbw.h; sourceTree = "<group>"; };
+		2F854FD418FA81B20029EB14 /* PRP2-A2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PRP2-A2"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2F6E2ED618D8A60900BE08FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F854FD118FA81B20029EB14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				2F6E2ED918D8A60900BE08FC /* PRP2-A1 */,
+				2F854FD418FA81B20029EB14 /* PRP2-A2 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,6 +114,23 @@
 			productReference = 2F6E2ED918D8A60900BE08FC /* PRP2-A1 */;
 			productType = "com.apple.product-type.tool";
 		};
+		2F854FD318FA81B20029EB14 /* PRP2-A2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F854FDA18FA81B20029EB14 /* Build configuration list for PBXNativeTarget "PRP2-A2" */;
+			buildPhases = (
+				2F854FD018FA81B20029EB14 /* Sources */,
+				2F854FD118FA81B20029EB14 /* Frameworks */,
+				2F854FD218FA81B20029EB14 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PRP2-A2";
+			productName = "PRP2-A2";
+			productReference = 2F854FD418FA81B20029EB14 /* PRP2-A2 */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -118,6 +153,7 @@
 			projectRoot = "";
 			targets = (
 				2F6E2ED818D8A60900BE08FC /* PRP2-A1 */,
+				2F854FD318FA81B20029EB14 /* PRP2-A2 */,
 			);
 		};
 /* End PBXProject section */
@@ -130,6 +166,13 @@
 				2F6E2EE418D8A64000BE08FC /* mycbw.c in Sources */,
 				2F51804A18D9A500002701AC /* functions.c in Sources */,
 				2F6E2EDC18D8A60900BE08FC /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F854FD018FA81B20029EB14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,6 +267,24 @@
 			};
 			name = Release;
 		};
+		2F854FDB18FA81B20029EB14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2F854FDC18FA81B20029EB14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -244,6 +305,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2F854FDA18FA81B20029EB14 /* Build configuration list for PBXNativeTarget "PRP2-A2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F854FDB18FA81B20029EB14 /* Debug */,
+				2F854FDC18FA81B20029EB14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

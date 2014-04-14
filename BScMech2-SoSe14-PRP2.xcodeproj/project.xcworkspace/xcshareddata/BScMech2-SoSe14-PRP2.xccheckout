@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5300A884-30FB-4EF3-AD4A-AD01A75C367E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BScMech2-SoSe14-PRP2</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>4D1DC57E-B639-4DE0-8D07-1722FAE4A84D</key>
+		<string>https://github.com/HAW-Hamburg-MT/BScMech2-SoSe14-PRP2.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BScMech2-SoSe14-PRP2.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>4D1DC57E-B639-4DE0-8D07-1722FAE4A84D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/HAW-Hamburg-MT/BScMech2-SoSe14-PRP2.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>4D1DC57E-B639-4DE0-8D07-1722FAE4A84D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>4D1DC57E-B639-4DE0-8D07-1722FAE4A84D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>BScMech2-SoSe14-PRP2</string>
+		</dict>
+	</array>
+</dict>
+</plist>
