@@ -1,10 +1,11 @@
 /*
  * file: systemFunctions.h
  * project: BScMech2-SoSe14-PRP2
- * version: 1.1 (14.04.2014 21:30)
+ * version: 1.2 (15.04.2014 14:00)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
  * - 1.1 motor safety added
+ * - 1.2 new function setOutput added
  *
  *
  * Created by Jannik Beyerstedt
@@ -21,7 +22,10 @@
 
 #define BNR 0
 
-#define E_SAVE 0x088      // safe/ reset actors state (motorStop + Light_RD)
+#define E_SAVE     0x0088   // safe/ reset actors state (motorStop + Light_RD)
+#define ALL_ON     0x0FFF   // all values
+#define RST_MOTOR  0x0B00   // both motor directions and stop (to clear all motor values)
+#define RST_LIGHT  0x00E0   // all LIGHTs
 
 // bitmasks for actors and sensors
 #define MOTOR_R    0x0001
@@ -45,10 +49,10 @@
 #define SNS_JUNCT  0x0020 // NO: closed if junction open
 #define SNS_SLIDE  0x0040 // NC: light barrier - open if slide is full
 #define POS_OUT    0x0080 // NC: light barrier
-#define BUT_START  0x0100 // NO
-#define BUT_STOP   0x0200 // NC
-#define BUT_RESET  0x0400 // NO
-#define BUT_ESTOP  0x0800 // NC: emergency stop is NC
+#define BTN_START  0x0100 // NO
+#define BTN_STOP   0x0200 // NC
+#define BTN_RESET  0x0400 // NO
+#define BTN_ESTOP  0x0800 // NC: emergency stop is NC
 
 // 0101.0011.0100 mask for all NO sensors
 #define SENSORS_NO 0x0534
@@ -57,7 +61,7 @@
 
 // 1111.1101.1011 mask for all sensors where hasTriggered is valid
 #define HAS_TRIG_VALID 0x0fdb
-// 1000.1110.1111 mask for sensors where isTriggered is valid
+// 1000.1110.1111 mask for all sensors where isTriggered is valid
 #define IS_TRIG_VALID  0x08ef
 
 
@@ -69,10 +73,11 @@ void updateProcessImage();      // writes all sensor values to local process ima
 void applyProcessToOutput ();   // writes local process image actor states to output ports
 
 int hasTriggered (Image mask);      // NEW: checks whether some sensor has changed it´s state (0->1, 1->0); ERROR -1 is not valid
-int isTriggered (Image mask);       // NEW: checks whether some sensor has active/ triggered state; ERROR -1 if not valid
+int isTriggered (Image mask);       // NEW: checks whether some sensor has active/ triggered state; all 1 -> 1; all 0 -> 0; ERROR -> -1
 
 void setBitInOutput (Image mask);   // gets bitmask and sets these bits in processimage (actors)
 void clearBitInOutput (Image mask); // gets bitmask and deletes these bits in processimage (actors)
+void setOutput (Image mask);        // sets (completely) a new output state
 void resetOutputs ();               // sets all actors to a save value and writes to output ports (e.g. E-Stop)
 
 int isBitSet (Image mask);          // DEPRICATED: gets bitmask, checks if these bits are set in process

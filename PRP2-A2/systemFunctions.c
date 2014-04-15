@@ -1,10 +1,11 @@
 /*
  * file: systemFunctions.h
  * project: BScMech2-SoSe14-PRP2
- * version: 1.1 (14.04.2014 21:30)
+ * version: 1.2 (15.04.2014 14:00)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
  * - 1.1 motor safety added
+ * - 1.2 new function setOutput added
  *
  *
  * Created by Jannik Beyerstedt
@@ -108,7 +109,7 @@ int isTriggered (Image mask) {      // NEW: checks whether some sensor has activ
 
 
 
-void setBitInOutput(Image mask) { // gets bitmask and sets these bits in processimage (actors)
+void setBitInOutput (Image mask) { // gets bitmask and sets these bits in processimage (actors)
     // --- MOTOR SAFETY ---
     if ( ((mask & MOTOR_R) == MOTOR_R) & ((actorsImage & MOTOR_L) == MOTOR_L) ) { // check switching to MOTOR_R if MOTOR_L is enabeled
         clearBitInOutput(MOTOR_L);
@@ -121,18 +122,22 @@ void setBitInOutput(Image mask) { // gets bitmask and sets these bits in process
     actorsImage = actorsImage | mask;
 }
 
-void clearBitInOutput(Image mask) { // gets bitmask and deletes these bits in processimage (actors)
+void clearBitInOutput (Image mask) { // gets bitmask and deletes these bits in processimage (actors)
     actorsImage = actorsImage & (~mask);
 }
 
-void resetOutputs () { // sets all actors to a save value and writes to output ports (e.g. E-Stop)
+void setOutput (Image mask) {       // sets output to mask
+    actorsImage = mask;
+}
+
+void resetOutputs () {              // sets all actors to a save value and writes to output ports (e.g. E-Stop)
     actorsImage = E_SAVE;
     
     printf("\n \n -----RESET FUNCTION TRIGGERED----- \n \n");
 }
 
 
-int isBitSet(Image mask) {          // DEPRICATED: gets bitmask, checks if these bits are set in process
+int isBitSet (Image mask) {          // DEPRICATED: gets bitmask, checks if these bits are set in process
     Image maskedBitIsOK = 0x0000;
     
     maskedBitIsOK = sensorsImage & mask;

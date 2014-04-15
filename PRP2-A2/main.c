@@ -35,7 +35,7 @@ int main() {
         updateProcessImage();
         
         // Emergency function
-        if (isBitNotSet(BUT_ESTOP)) {
+        if (isBitNotSet(BTN_ESTOP)) {
             resetOutputs();
         } else {
             // code for normal execution HERE
