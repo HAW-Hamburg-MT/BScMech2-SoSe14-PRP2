@@ -85,15 +85,15 @@ void theMachine(States *currentState) {
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
             setBitInOutput(LIGHT_RD);
             
-            if (hasTriggered(SNS_HEIGHT)) {
+            if (isTriggered(SNS_HEIGHT, 0)) {
                 *currentState = TRANSP_H1;
                 printf("height OK");
                 printf("new: TRANSP_H1\n");
-            }else {
+            }else if (isTriggered(SNS_HEIGHT, 1)) {
                 *currentState = TRANSP_H0;
                 printf("height not OK");
                 printf("new: TRANSP_H0\n");
-            }
+            }else;
             
             break;
         case TRANSP_H1: // transport if height in range
@@ -204,6 +204,8 @@ void theMachine(States *currentState) {
              -> START  at BTN_STOP
              */
             
+            // TODO ACTIVE ONLY IF NO ITEM AT END
+            
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
             setBitInOutput(MOTOR_STOP);
             setBitInOutput(LIGHT_RD);
@@ -229,6 +231,8 @@ void theMachine(States *currentState) {
              -> TRANSP at POS_IN
              -> START  at BTN_STOP
              */
+            
+            // TODO ACTIVE ONLY IF NO ITEM AT END
             
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
             setBitInOutput(MOTOR_STOP);
