@@ -35,7 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/stateMachine.o \
+	${OBJECTDIR}/systemFunctions.o
 
 
 # C Compiler Flags
@@ -52,20 +54,30 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/C/Festo/lib
+LDLIBSOPTIONS=-L/D/Festo/lib -lcbw32
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prp2-a2.exe
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/festo2_1.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prp2-a2.exe: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/festo2_1.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prp2-a2 ${OBJECTFILES} ${LDLIBSOPTIONS}
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/festo2_1 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -I/C/Festo/lib -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+	${RM} $@.d
+	$(COMPILE.c) -g -I/D/Festo/lib -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/stateMachine.o: stateMachine.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -I/D/Festo/lib -MMD -MP -MF $@.d -o ${OBJECTDIR}/stateMachine.o stateMachine.c
+
+${OBJECTDIR}/systemFunctions.o: systemFunctions.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.c) -g -I/D/Festo/lib -MMD -MP -MF $@.d -o ${OBJECTDIR}/systemFunctions.o systemFunctions.c
 
 # Subprojects
 .build-subprojects:
@@ -73,7 +85,7 @@ ${OBJECTDIR}/main.o: main.c
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/prp2-a2.exe
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/festo2_1.exe
 
 # Subprojects
 .clean-subprojects:

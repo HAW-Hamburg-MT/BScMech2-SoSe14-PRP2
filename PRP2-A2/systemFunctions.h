@@ -6,6 +6,7 @@
  * - 1.0 stable and tested for PRP2-A1
  * - 1.1 motor safety added
  * - 1.2 new function setOutput added
+ * - 1.2.1 several bugfixes
  *
  *
  * Created by Jannik Beyerstedt
@@ -24,7 +25,7 @@
 
 #define E_SAVE     0x0088   // safe/ reset actors state (motorStop + Light_RD)
 #define ALL_ON     0x0FFF   // all values
-#define RST_MOTOR  0x0B00   // both motor directions and stop (to clear all motor values)
+#define RST_MOTOR  0x000F   // to clear all motor values
 #define RST_LIGHT  0x00E0   // all LIGHTs
 
 // bitmasks for actors and sensors
@@ -43,7 +44,7 @@
 
 #define POS_IN     0x0001 // NC: light barrier
 #define POS_HEIGHT 0x0002 // NC: light barrier
-#define SNS_HEIGHT 0x0004 // NO: closed if height is in range
+#define SNS_HEIGHT 0x0004 // NC: OPEN if height is in range
 #define POS_JUNCT  0x0008 // NC: light barrier
 #define SNS_METAL  0x0010 // NO: closed if metal detected
 #define SNS_JUNCT  0x0020 // NO: closed if junction open
@@ -54,34 +55,36 @@
 #define BTN_RESET  0x0400 // NO
 #define BTN_ESTOP  0x0800 // NC: emergency stop is NC
 
-// 0101.0011.0100 mask for all NO sensors
-#define SENSORS_NO 0x0534
-// 1010.1100.1011 mask for all NC sensors
-#define SENSORS_NC 0x0acb
+// 0101.0011.0000 mask for all NO sensors
+#define SENSORS_NO 0x0530
+// 1010.1100.1111 mask for all NC sensors
+#define SENSORS_NC 0x0acf
 
-// 1111.1101.1011 mask for all sensors where hasTriggered is valid
-#define HAS_TRIG_VALID 0x0fdb
-// 1000.1110.1111 mask for all sensors where isTriggered is valid
-#define IS_TRIG_VALID  0x08ef
+// 1111.1100.1011 mask for all sensors where hasTriggered is valid
+#define HAS_TRIG_VALID 0x0fcb
+// 1000.1111.1111 mask for all sensors where isTriggered is valid
+#define IS_TRIG_VALID  0x08ff
 
 
 typedef unsigned short Image;
 
 
-void initializeSystem ();       // initializes all ports
-void updateProcessImage();      // writes all sensor values to local process image AND sorts by 0->1 and 1->0 changes
-void applyProcessToOutput ();   // writes local process image actor states to output ports
+void initializeSystem ();           // initializes all ports
+void updateProcessImage();          // reads all sensor values AND sorts by 0->1 and 1->0 changes
+void applyProcessToOutput ();       // writes local process image actor states to output ports
 
-int hasTriggered (Image mask);      // NEW: checks whether some sensor has changed it´s state (0->1, 1->0); ERROR -1 is not valid
-int isTriggered (Image mask);       // NEW: checks whether some sensor has active/ triggered state; all 1 -> 1; all 0 -> 0; ERROR -> -1
+// checks whether some sensor has changed it´s state, NO and NC are handeled correctly
+int hasTriggered (Image mask);           // ERROR == -1 !
+// checks whether some sensor has active state, NO and NC are handeled corrently
+int isTriggered (Image mask, int state); // ERROR == -1 !
 
 void setBitInOutput (Image mask);   // gets bitmask and sets these bits in processimage (actors)
 void clearBitInOutput (Image mask); // gets bitmask and deletes these bits in processimage (actors)
 void setOutput (Image mask);        // sets (completely) a new output state
 void resetOutputs ();               // sets all actors to a save value and writes to output ports (e.g. E-Stop)
 
-int isBitSet (Image mask);          // DEPRICATED: gets bitmask, checks if these bits are set in process
-int isBitNotSet (Image mask);       // DEPRICATED: gets bitmask, checks if all bits are not set process (IS NEEDED)
+//int isBitSet (Image mask);          // DEPRICATED: gets bitmask, checks if these bits are set in process
+//int isBitNotSet (Image mask);       // DEPRICATED: gets bitmask, checks if all bits are not set process (IS NEEDED)
 
 
 #endif

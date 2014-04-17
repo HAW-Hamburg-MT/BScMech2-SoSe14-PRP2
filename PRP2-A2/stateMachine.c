@@ -1,7 +1,9 @@
 /*
  * file: stateMachine.c
  * project: BScMech2-SoSe14-PRP2
- * version: 0.1 (15.04.2014 15:20)
+ * version: 0.2 (17.04.2014 17:30)
+ * - 0.1 first version
+ * - 0.2 first and bugs fixed
  *
  *
  * Created by Jannik Beyerstedt
@@ -20,192 +22,228 @@
 void theMachine(States *currentState) {
     
     switch (*currentState) {
-        case START:
+        case START: // initial state
             /*
-             Zu Beginn soll die Anlage in einem Zustand sein (Anfangszustand), der folgendermaßen cha- rakterisiert ist:
-              Das Band steht.
-              Die Schranke ist geschlossen.
-              Die Ampelleuchten sind alle aus.
-              Die Lampen Q1 und Q2 sind aus.
-              Nur die Start-Taste leuchtet.
-             */
+             + traffic lights off
+             + LED_START on
+             -> ACTIVE at BTN_START
+            */
+            
             setOutput(LED_START);
             
-            if (isTriggered(BTN_START)) {
+            if (hasTriggered(BTN_START)) {
                 *currentState = ACTIVE;
+                printf("new: ACTIVE\n");
             }else;
             
             break;
-        case ACTIVE:
+        case ACTIVE:  // active state
             /*
-             Wenn die Start-Taste gedrückt wird, geht die Anlage in den Betrieb über (Zustand 2):
-              Das Band steht still.
-              Bei der Ampel leuchtet nur grün.
+             + traffic lights green
+             -> TRANSP at POS_IN
+             -> START  at BTN_START
              */
+            
             setOutput(LIGHT_GN);
             
             if (hasTriggered(POS_IN)) {
                 *currentState = TRANSP;
-            }else if (hasTriggered(BTN_START)){
+                printf("new: TRANSP\n");
+            } else if (hasTriggered(BTN_START)) {
                 *currentState = START;
-            }else;
+                printf("new: START\n");
+            } else;
     
             break;
-        case TRANSP:
+        case TRANSP:  // transport state
             /*
-             Wird im Zustand 2 ein Werkstück an den Bandanfang aufgelegt, beginnt der Transport des Werkstückes.
-              Das Band transportiert das aufgesetzte Werkstück nach rechts.
-              Die Ampel schaltet von Grün auf Gelb.
+             + transport (fast) right
+             + traffic lights green to yellow
+             -> TRANSP_H at POS_HEIGHT
              */
-            clearBitInOutput(LIGHT_GN);
+            
+            //setOutput(LIGHT_GN | MOTOR_R);
+            
+            clearBitInOutput(RST_MOTOR | RST_LIGHT);
             setBitInOutput(LIGHT_YE);
-            clearBitInOutput(RST_MOTOR);
             setBitInOutput(MOTOR_R);
             
             if (hasTriggered(POS_HEIGHT)) {
                 *currentState = TRANSP_H;
+                printf("new: TRANSP_H\n");
             }
             
             break;
-        case TRANSP_H:
+        case TRANSP_H: // transport at height sensor
             /*
-             Wenn das Werkstück die Lichtschranke der Höhenmessung erreicht, wird folgender Zustand erreicht:
-              Das Band wird gestoppt.
-              Die Ampel schaltet von Gelb auf Rot.
+             + stop transporting
+             + traffic lights yellow to red
+             -> TRANSP_H1 at height in range
+             -> TRANSP_H0 at height not in range
              */
+            
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
             setBitInOutput(LIGHT_RD);
             
             if (hasTriggered(SNS_HEIGHT)) {
                 *currentState = TRANSP_H1;
+                printf("height OK");
+                printf("new: TRANSP_H1\n");
             }else {
                 *currentState = TRANSP_H0;
+                printf("height not OK");
+                printf("new: TRANSP_H0\n");
             }
             
             break;
-        case TRANSP_H1:
+        case TRANSP_H1: // transport if height in range
             /*
-             Wenn die Höhe des Werkstücks erfasst wurde und die Höhe in Ordnung ist, wird folgender Zu- stand erreicht:
-              Das Band läuft langsam nach rechts.
-              Die Ampel schaltet auf Grün.
-              Die Q1-Lampe leuchtet. Diese Lampe soll so lange leuchten, bis ein neues Werkstück auf dem Band gelegt wird.
-              Geben Sie das Ergebnis der Höhenmessung zusätzlich auf der Konsole aus.
+             + transport slowly right
+             + traffic lights green
+             + Q1 until new item at POS_IN
+             -> TRANSP_J at POS_JUNCT
              */
+            
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
             setBitInOutput(MOTOR_R | MOTOR_SLOW);
             setBitInOutput(LED_Q1 | LIGHT_GN);
-            printf("height OK");
             
-            if (isTriggered(POS_JUNCT)) {
+            if (hasTriggered(POS_JUNCT)) {
                 *currentState = TRANSP_J;
+                printf("new: TRANSP_J\n");
             }
             
             break;
-        case TRANSP_H0:
+        case TRANSP_H0: // transport if height NOT in range
             /*
-             Wenn die Höhe des Werkstücks erfasst wurde und die Höhe nicht in Ordnung ist, wird folgender Zustand erreicht:
-              Das Band läuft langsam nach rechts.
-              Die Ampel schaltet auf Rot.
-              Die Q1 Lampe leuchtet nicht.
-              Geben Sie das Ergebnis der Höhenmessung zusätzlich auf der Konsole aus.
+             + transport slowly right
+             + traffic lights red
+             + Q1 off (no change)
+             -> TRANSP_J at POS_JUNCT
              */
+            
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
             setBitInOutput(MOTOR_R | MOTOR_SLOW);
-            setBitInOutput(LED_Q1 | LIGHT_RD);
-            printf("height not OK");
+            setBitInOutput(LIGHT_RD);
             
-            if (isTriggered(POS_JUNCT)) {
+            if (hasTriggered(POS_JUNCT)) {
                 *currentState = TRANSP_J;
+                printf("new: TRANSP_J\n");
             }
             
             break;
-        case TRANSP_J:
+        case TRANSP_J:  // transport at junction
             /*
-             Wenn das Werkstück die Weiche erreicht hat, wird folgender Zustand erreicht:
-              Das Band wird gestoppt.
-              Die Ampel schaltet auf Rot.
+             + stop transporting
+             + traffic lights red
+             -> TRANSP_M0 at no metal
+             -> TRANSP_M1 at is metal
              */
+            
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
             setBitInOutput(LIGHT_RD);
             
-            if (hasTriggered(SNS_METAL)) {
+            if (isTriggered(SNS_METAL, 1)) {
                 *currentState = TRANSP_M1;
-            }else {
+                printf("new: TRANSP_M1\n");
+            }else if (isTriggered(SNS_METAL, 0)){
                 *currentState = TRANSP_M0;
-            }
+                printf("new: TRANSP_M0\n");
+            }else;
             
             break;
-        case TRANSP_M0:
+        case TRANSP_M0: // transport no metal
             /*
-             Wenn das Werkstück bei der Weiche ist und nicht metallisch ist, wird folgender Zustand er- reicht:
-              Das Band läuft nach rechts.
-              Die Ampel schaltet auf Gelb.
-              Die Weiche wird geöffnet.
-              Die Q2-Lampe leuchtet.
+             + transport (fast) right
+             + traffic lights yellow
+             + junction open (on) and Q2 on
+             -> AT_SLIDE at SNS_SLIDE
+             -> AT_END   at POS_END
              */
+            
             setBitInOutput(MOTOR_R);
             setBitInOutput(JUNCTION | LED_Q2);
             setBitInOutput(LIGHT_YE);
             
             if (hasTriggered(SNS_SLIDE)) {
                 *currentState = AT_SLIDE;
+                printf("new: AT_SLIDE\n");
             }else if (hasTriggered(POS_OUT)) {
                 *currentState = AT_END;
+                printf("new: AT_END\n");
             }else;
             
             break;
-        case TRANSP_M1:
+        case TRANSP_M1: // transport metal
             /*
-             Wenn das Werkstück bei der Weiche ist und metallisch ist, wird folgender Zustand erreicht:
-              Das Band läuft nach rechts.
-              Die Ampel schaltet auf Gelb und Rot.
-              Die Weiche zu; Q2 aus.
+             + transport (fast) right
+             + traffic lights yellow and red
+             + junction keeps closed and Q2 keeps off
+             -> AT_SLIDE at SNS_SLIDE
+             -> AT_END   at POS_END
              */
+            
             setBitInOutput(MOTOR_R);
             setBitInOutput(LIGHT_YE | LIGHT_RD);
-            clearBitInOutput(JUNCTION | LED_Q2);
             
             if (hasTriggered(SNS_SLIDE)) {
                 *currentState = AT_SLIDE;
+                printf("new: AT_SLIDE\n");
             }else if (hasTriggered(POS_OUT)) {
                 *currentState = AT_END;
+                printf("new: AT_END\n");
             }else;
             
             break;
-        case AT_SLIDE:
+        case AT_SLIDE:  // end state for metal items
             /*
-             Wenn das Werkstück in der Rutsche angekommen ist, wird folgender Zustand erreicht:
-              Das Band wird gestoppt.
-              Die Ampel schaltet auf Rot.
-             Die Anlage kann wieder ausgeschaltet werden, bzw. ein neues Werkstück eingelegt werden.
+             + stop transporting
+             + traffic lights red
+             + turn junction off and Q2 off (keeps state)
+             -> TRANSP at POS_IN
+             -> START  at BTN_STOP
              */
+            
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
+            setBitInOutput(MOTOR_STOP);
             setBitInOutput(LIGHT_RD);
             clearBitInOutput(JUNCTION | LED_Q2);
             
             if (hasTriggered(BTN_STOP)) {
                 *currentState = START;
+                printf("new: START\n");
             }else if (hasTriggered(POS_IN)) {
                 *currentState = TRANSP;
+                printf("new: TRANSP\n");
+            }else if (hasTriggered(BTN_START)) {
+                *currentState = ACTIVE;
+                printf("new: ACTIVE\n");
             }
             
             break;
-        case AT_END:
+        case AT_END:   // end state for non metal items
             /*
-             Wenn das Werkstück im Auslauf angekommen ist, wird folgender Zustand erreicht:
-              Das Band wird gestoppt.
-              Die Weiche geht zu; Q2 ausgeschaltet.
-              Die Ampel schaltet auf Grün.
-             Die Anlage kann wieder ausgeschaltet werden, bzw. ein neues Werkstück eingelegt werden.
+             + stop transporting
+             + traffic lights green
+             + turn junction off and Q2 off
+             -> TRANSP at POS_IN
+             -> START  at BTN_STOP
              */
+            
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
+            setBitInOutput(MOTOR_STOP);
             setBitInOutput(LIGHT_GN);
             clearBitInOutput(JUNCTION | LED_Q2);
             
             if (hasTriggered(BTN_STOP)) {
                 *currentState = START;
+                printf("new: START\n");
             }else if (hasTriggered(POS_IN)) {
                 *currentState = TRANSP;
+                printf("new: TRANSP\n");
+            }else if (hasTriggered(BTN_START)) {
+                *currentState = ACTIVE;
+                printf("new: ACTIVE\n");
             }
             
             break;

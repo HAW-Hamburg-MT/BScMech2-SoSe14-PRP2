@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=MinGW-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/MinGW-Windows
-CND_ARTIFACT_NAME_Debug=prp2-a2
-CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/prp2-a2
+CND_ARTIFACT_NAME_Debug=festo2_1
+CND_ARTIFACT_PATH_Debug=dist/Debug/MinGW-Windows/festo2_1
 CND_PACKAGE_DIR_Debug=dist/Debug/MinGW-Windows/package
-CND_PACKAGE_NAME_Debug=prp2-a2.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/prp2-a2.tar
+CND_PACKAGE_NAME_Debug=festo21.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/MinGW-Windows/package/festo21.tar
 # Release configuration
 CND_PLATFORM_Release=MinGW-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/MinGW-Windows
-CND_ARTIFACT_NAME_Release=prp2-a2
-CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/prp2-a2
+CND_ARTIFACT_NAME_Release=festo2_1
+CND_ARTIFACT_PATH_Release=dist/Release/MinGW-Windows/festo2_1
 CND_PACKAGE_DIR_Release=dist/Release/MinGW-Windows/package
-CND_PACKAGE_NAME_Release=prp2-a2.tar
-CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/prp2-a2.tar
+CND_PACKAGE_NAME_Release=festo21.tar
+CND_PACKAGE_PATH_Release=dist/Release/MinGW-Windows/package/festo21.tar
 #
 # include compiler specific variables
 #

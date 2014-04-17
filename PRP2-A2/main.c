@@ -35,10 +35,10 @@ int main() {
         updateProcessImage();
         
         // Emergency function
-        if (isBitNotSet(BTN_ESTOP)) {
+        if (isTriggered(BTN_ESTOP, 0)) {
             resetOutputs();
         } else {
-            // code for normal execution HERE
+            // !-- code for normal execution HERE --!
             
             theMachine(&machineStates);
             

@@ -1,7 +1,9 @@
 /*
  * file: stateMachine.h
  * project: BScMech2-SoSe14-PRP2
- * version: 0.1 (15.04.2014 15:20)
+ * version: 0.2 (17.04.2014 17:30)
+ * - 0.1 first version
+ * - 0.2 first and bugs fixed
  *
  *
  * Created by Jannik Beyerstedt
