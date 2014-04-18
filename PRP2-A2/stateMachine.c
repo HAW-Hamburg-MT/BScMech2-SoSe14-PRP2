@@ -1,9 +1,10 @@
 /*
  * file: stateMachine.c
  * project: BScMech2-SoSe14-PRP2
- * version: 0.2 (17.04.2014 17:30)
+ * version: 0.3 (18.04.2014 11:30)
  * - 0.1 first version
  * - 0.2 first and bugs fixed
+ * - 0.3 inital logic enahnced, main must not initialize currentState
  *
  *
  * Created by Jannik Beyerstedt
@@ -250,6 +251,10 @@ void theMachine(States *currentState) {
                 printf("new: ACTIVE\n");
             }
             
+            break;
+            
+        default:    // INITIALIZE STATE
+            *currentState = START;
             break;
             
     }//END SWITCH
