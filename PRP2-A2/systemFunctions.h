@@ -1,12 +1,13 @@
 /*
  * file: systemFunctions.h
  * project: BScMech2-SoSe14-PRP2
- * version: 1.2 (15.04.2014 14:00)
+ * version: 1.3 (18.04.2014 11:30)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
  * - 1.1 motor safety added
  * - 1.2 new function setOutput added
- * - 1.2.1 several bugfixes
+ * - 1.2.1 several bugfixes and isTriggered enhanced
+ * - 1.3 isTriggered rewritten
  *
  *
  * Created by Jannik Beyerstedt
@@ -82,9 +83,5 @@ void setBitInOutput (Image mask);   // gets bitmask and sets these bits in proce
 void clearBitInOutput (Image mask); // gets bitmask and deletes these bits in processimage (actors)
 void setOutput (Image mask);        // sets (completely) a new output state
 void resetOutputs ();               // sets all actors to a save value and writes to output ports (e.g. E-Stop)
-
-//int isBitSet (Image mask);          // DEPRICATED: gets bitmask, checks if these bits are set in process
-//int isBitNotSet (Image mask);       // DEPRICATED: gets bitmask, checks if all bits are not set process (IS NEEDED)
-
 
 #endif

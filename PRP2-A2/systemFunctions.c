@@ -1,12 +1,13 @@
 /*
  * file: systemFunctions.h
  * project: BScMech2-SoSe14-PRP2
- * version: 1.2 (15.04.2014 14:00)
+ * version: 1.3 (18.04.2014 11:30)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
  * - 1.1 motor safety added
  * - 1.2 new function setOutput added
  * - 1.2.1 several bugfixes and isTriggered enhanced
+ * - 1.3 isTriggered rewritten
  *
  *
  * Created by Jannik Beyerstedt
@@ -103,38 +104,41 @@ int hasTriggered (Image mask) {     // NEW: checks whether some sensor has chang
     }
 }
 
+
 int isTriggered (Image mask, int state) {      // NEW: checks whether some sensor has active/ triggered state
     Image maskedBitIsOK = 0x0000;
-    int maskIsValid = 0;
-    
-    if ((mask & IS_TRIG_VALID) == mask) {
-        maskIsValid = TRUE;
-    }else {
-        maskIsValid = FALSE;
-        printf("ERROR: isTriggered: invalid mask");
-    }
     
     maskedBitIsOK = sensorsImage & mask;
     
-    if (maskIsValid && state == 1) {       // check for 1
-        if (maskedBitIsOK == mask ) {
-            return 1;
-        }else {
-            return 0;
+    if ((mask & IS_TRIG_VALID) == mask) {   // mask is valid
+        
+        switch (state) {
+            case 1: // check for 1 bits
+                if (maskedBitIsOK == mask ) {
+                    return 1;
+                }else {
+                    return 0;
+                }
+                break;
+                
+            case 0: // check for 0 bits
+                if (maskedBitIsOK == 0x0000) {
+                    return 1;
+                }else {
+                    return 0;
+                }
+                break;
+            
+            default:
+                printf("ERROR: isTriggered: other error");
+                return -1;
+                break;
         }
         
-    } else if (maskIsValid && state == 0){ // check for 0
-        if (maskedBitIsOK == 0x0000) {
-            return 1;
-        }else {
-            return 0;
-        }
-        
-    } else {
-        printf("ERROR: isTriggered: other error");
+    }else {
+        printf("ERROR: isTriggered: invalid mask");
         return -1;
     }
-    
 }
 
 
@@ -165,49 +169,4 @@ void resetOutputs () {              // sets all actors to a save value and write
     actorsImage = E_SAVE;
     
     printf("\n -----RESET FUNCTION TRIGGERED----- \n");
-}
-
-
-int isBitSet (Image mask) {          // DEPRICATED: gets bitmask, checks if these bits are set in process
-    Image maskedBitIsOK = 0x0000;
-    
-    maskedBitIsOK = sensorsImage & mask;
-    
-    if (maskedBitIsOK == mask)
-        return 1;
-    else
-        return 0;
-}
-
-int isBitNotSet (Image mask) {      // DEPRICATED: gets bitmask, checks if all bits are not set process (IS NEEDED)
-    Image maskedBitIsOK = 0x0000;
-    
-    maskedBitIsOK = (sensorsImage ^ mask) & mask;
-    
-    if (maskedBitIsOK == mask)
-        return 1;
-    else
-        return 0;
-}
-
-int hasBitChanged01 (Image mask) {  // DEPRICATED: gets bitmask, checks if all bits changed from 0 to 1
-    Image maskedBitIsOK = 0x0000;
-    
-    maskedBitIsOK = changed0to1 & mask;
-    
-    if (maskedBitIsOK == mask)
-        return 1;
-    else
-        return 0;
-}
-
-int hasBitChanged10 (Image mask) {  // DEPRICATED: gets bitmask, checks if all bits changed from 1 to 0
-    Image maskedBitIsOK = 0x0000;
-    
-    maskedBitIsOK = changed1to0 & mask;
-    
-    if (maskedBitIsOK == mask)
-        return 1;
-    else
-        return 0;
 }
