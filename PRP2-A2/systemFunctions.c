@@ -8,6 +8,7 @@
  * - 1.2 new function setOutput added
  * - 1.2.1 several bugfixes and isTriggered enhanced
  * - 1.3 isTriggered rewritten
+ * - 1.3.1 bug in setBitInOutput motor safety fixed
  *
  *
  * Created by Jannik Beyerstedt
@@ -149,9 +150,11 @@ void setBitInOutput (Image mask) { // gets bitmask and sets these bits in proces
     if ( ((mask & MOTOR_R) == MOTOR_R) & ((actorsImage & MOTOR_L) == MOTOR_L) ) {
         clearBitInOutput(MOTOR_L);
         applyProcessToOutput();
-    }else if ( ((mask & MOTOR_L) == mask) & ((actorsImage & MOTOR_R) == MOTOR_R) ) {
+        printf("ATTENTION: MOTOR SAFETY triggered");
+    }else if ( ((mask & MOTOR_L) == MOTOR_L) & ((actorsImage & MOTOR_R) == MOTOR_R) ) {
         clearBitInOutput(MOTOR_R);
         applyProcessToOutput();
+        printf("ATTENTION: MOTOR SAFETY triggered");
     }else;
     
     actorsImage = actorsImage | mask;
