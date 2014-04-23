@@ -1,3 +1,3 @@
-build/Debug/MinGW-Windows/main.o: main.c systemFunctions.h
+build/Debug/MinGW-Windows/main.o: main.c functions.h
 
-systemFunctions.h:
+functions.h:
