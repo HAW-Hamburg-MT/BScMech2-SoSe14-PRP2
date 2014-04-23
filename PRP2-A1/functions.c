@@ -4,11 +4,12 @@
  * version: 1.0 (01.04.2014 18:00)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
+ * - 1.1 little improvements
  *
  *
  * Created by Jannik Beyerstedt
  * jannik.beyerstedt.de
- * Copyright: all code under creative commons licence: CC BY-NC-SA 3.0
+ * Copyright: all code under creative commons license: CC BY-NC-SA 3.0
  *
  *
  * HAW Hamburg - Labor Programmieren 2
@@ -40,6 +41,8 @@ void updateProcessImage() { // writes all sensor values to local process image A
     Byte reading = 0x00;
     Image changedYes = 0x0000;
     
+    lastReadingImage = sensorsImage;
+    
     cbDIn(BNR, FIRSTPORTB, &reading);
     sensorsImage = reading;
     cbDIn(BNR, FIRSTPORTCH, &reading);
@@ -50,10 +53,7 @@ void updateProcessImage() { // writes all sensor values to local process image A
     changed0to1 = changedYes & sensorsImage;
     
     // 1 to 0
-    changedYes = lastReadingImage ^ sensorsImage;
     changed1to0 = changedYes & lastReadingImage;
-    
-    lastReadingImage = sensorsImage;
 }
 
 void applyProcessToOutput() { // writes local process image actor states to output ports

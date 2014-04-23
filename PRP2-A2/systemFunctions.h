@@ -1,18 +1,20 @@
 /*
  * file: systemFunctions.h
  * project: BScMech2-SoSe14-PRP2
- * version: 1.3 (18.04.2014 11:30)
+ * version: 1.3.2 (22.04.2014 15:00)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
  * - 1.1 motor safety added
  * - 1.2 new function setOutput added
  * - 1.2.1 several bugfixes and isTriggered enhanced
  * - 1.3 isTriggered rewritten
+ * - 1.3.1 bug in setBitInOutput motor safety fixed
+ * - 1.3.2 updateProcessImage logic improved
  *
  *
  * Created by Jannik Beyerstedt
  * jannik.beyerstedt.de
- * Copyright: all code under creative commons licence: CC BY-NC-SA 3.0
+ * Copyright: all code under creative commons license: CC BY-NC-SA 3.0
  *
  *
  * HAW Hamburg - Labor Programmieren 2

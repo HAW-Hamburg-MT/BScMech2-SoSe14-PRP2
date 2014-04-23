@@ -4,11 +4,11 @@
  * version: 1.0 (01.04.2014 18:00)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
- *
+ * - 1.1 little improvements
  *
  * Created by Jannik Beyerstedt
  * jannik.beyerstedt.de
- * Copyright: all code under creative commons licence: CC BY-NC-SA 3.0
+ * Copyright: all code under creative commons license: CC BY-NC-SA 3.0
  *
  *
  * HAW Hamburg - Labor Programmieren 2

@@ -1,7 +1,7 @@
 /*
  * file: systemFunctions.h
  * project: BScMech2-SoSe14-PRP2
- * version: 1.3 (18.04.2014 11:30)
+ * version: 1.3.2 (22.04.2014 15:00)
  * - 0.9 first Version (not tested with real machine)
  * - 1.0 stable and tested for PRP2-A1
  * - 1.1 motor safety added
@@ -9,11 +9,12 @@
  * - 1.2.1 several bugfixes and isTriggered enhanced
  * - 1.3 isTriggered rewritten
  * - 1.3.1 bug in setBitInOutput motor safety fixed
+ * - 1.3.2 updateProcessImage logic improved
  *
  *
  * Created by Jannik Beyerstedt
  * jannik.beyerstedt.de
- * Copyright: all code under creative commons licence: CC BY-NC-SA 3.0
+ * Copyright: all code under creative commons license: CC BY-NC-SA 3.0
  *
  *
  * HAW Hamburg - Labor Programmieren 2
@@ -52,6 +53,8 @@ void updateProcessImage() { // reads all sensor values AND sorts by 0->1 and 1->
     Byte reading = 0x00;
     Image changedYes = 0x0000;
     
+    lastReadingImage = sensorsImage;
+    
     cbDIn(BNR, FIRSTPORTB, &reading);
     sensorsImage = reading;
     cbDIn(BNR, FIRSTPORTCH, &reading);
@@ -62,10 +65,7 @@ void updateProcessImage() { // reads all sensor values AND sorts by 0->1 and 1->
     changed0to1 = changedYes & sensorsImage;
     
     // 1 to 0
-    changedYes = lastReadingImage ^ sensorsImage;
     changed1to0 = changedYes & lastReadingImage;
-    
-    lastReadingImage = sensorsImage;
 }
 
 void applyProcessToOutput() { // writes local process image actor states to output ports

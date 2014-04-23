@@ -1,8 +1,9 @@
 /*
  * file: main.c
  * project: BScMech2-SoSe14-PRP2
- * version: 0.2 (14.04.2014 10:00)
+ * version: 1.0 (22.04.2014 15:00)
  * - 0.2 changes for v0.3 of stateMachine
+ * - 1.0 tested and for v1.0 of stateMachine
  *
  *
  * Created by Jannik Beyerstedt
@@ -28,8 +29,6 @@ int main() {
     resetOutputs();
     updateProcessImage(); // set inital sensor Values
     
-    States machineStates;
-    
     while (1) {
         //changeSensors(); // for debugging without real system
         
@@ -41,7 +40,7 @@ int main() {
         } else {
             // !-- code for normal execution HERE --!
             
-            theMachine(&machineStates);
+            theMachine();
             
         }// END EMERGENCY
         

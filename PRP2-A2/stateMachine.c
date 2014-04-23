@@ -1,24 +1,29 @@
 /*
  * file: stateMachine.c
  * project: BScMech2-SoSe14-PRP2
- * version: 0.3 (18.04.2014 11:30)
+ * version: 1.0 (22.04.2014 15:00)
  * - 0.1 first version
  * - 0.2 first and bugs fixed
- * - 0.3 inital logic enahnced, main must not initialize currentState
+ * - 0.3 initial logic enahnced, main must not initialize currentState
+ * - 1.0 tested and OK, state logic enhancements
  *
  *
  * Created by Jannik Beyerstedt
  * jannik.beyerstedt.de
- * Copyright: all code under creative commons licence: CC BY-NC-SA 3.0
+ * Copyright: all code under creative commons license: CC BY-NC-SA 3.0
  *
  *
  * HAW Hamburg - Labor Programmieren 2
- * festo conveyor belt system - excercise 2
+ * festo conveyor belt system - exercise 2
  */
 
 #include <stdio.h>
 #include "stateMachine.h"
 #include "systemFunctions.h"
+
+
+States currentState = INIT;
+
 
 void theMachine(States *currentState) {
     
@@ -63,11 +68,8 @@ void theMachine(States *currentState) {
              -> TRANSP_H at POS_HEIGHT
              */
             
-            //setOutput(LIGHT_GN | MOTOR_R);
-            
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
-            setBitInOutput(LIGHT_YE);
-            setBitInOutput(MOTOR_R);
+            setBitInOutput(LIGHT_YE | MOTOR_R);
             
             if (hasTriggered(POS_HEIGHT)) {
                 *currentState = TRANSP_H;
@@ -106,8 +108,7 @@ void theMachine(States *currentState) {
              */
             
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
-            setBitInOutput(MOTOR_R | MOTOR_SLOW);
-            setBitInOutput(LED_Q1 | LIGHT_GN);
+            setBitInOutput(MOTOR_R | MOTOR_SLOW | LED_Q1 | LIGHT_GN);
             
             if (hasTriggered(POS_JUNCT)) {
                 *currentState = TRANSP_J;
@@ -124,8 +125,7 @@ void theMachine(States *currentState) {
              */
             
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
-            setBitInOutput(MOTOR_R | MOTOR_SLOW);
-            setBitInOutput(LIGHT_RD);
+            setBitInOutput(MOTOR_R | MOTOR_SLOW | LIGHT_RD);
             
             if (hasTriggered(POS_JUNCT)) {
                 *currentState = TRANSP_J;
@@ -162,9 +162,7 @@ void theMachine(States *currentState) {
              -> AT_END   at POS_END
              */
             
-            setBitInOutput(MOTOR_R);
-            setBitInOutput(JUNCTION | LED_Q2);
-            setBitInOutput(LIGHT_YE);
+            setBitInOutput(MOTOR_R | JUNCTION | LED_Q2 | LIGHT_YE);
             
             if (hasTriggered(SNS_SLIDE)) {
                 *currentState = AT_SLIDE;
@@ -184,8 +182,7 @@ void theMachine(States *currentState) {
              -> AT_END   at POS_END
              */
             
-            setBitInOutput(MOTOR_R);
-            setBitInOutput(LIGHT_YE | LIGHT_RD);
+            setBitInOutput(MOTOR_R | LIGHT_YE | LIGHT_RD);
             
             if (hasTriggered(SNS_SLIDE)) {
                 *currentState = AT_SLIDE;
@@ -208,8 +205,7 @@ void theMachine(States *currentState) {
             // TODO ACTIVE ONLY IF NO ITEM AT END
             
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
-            setBitInOutput(MOTOR_STOP);
-            setBitInOutput(LIGHT_RD);
+            setBitInOutput(MOTOR_STOP | LIGHT_RD);
             clearBitInOutput(JUNCTION | LED_Q2);
             
             if (hasTriggered(BTN_STOP)) {
@@ -236,8 +232,7 @@ void theMachine(States *currentState) {
             // TODO ACTIVE ONLY IF NO ITEM AT END
             
             clearBitInOutput(RST_MOTOR | RST_LIGHT);
-            setBitInOutput(MOTOR_STOP);
-            setBitInOutput(LIGHT_GN);
+            setBitInOutput(MOTOR_STOP | LIGHT_GN);
             clearBitInOutput(JUNCTION | LED_Q2);
             
             if (hasTriggered(BTN_STOP)) {
