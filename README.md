@@ -3,7 +3,11 @@ BScMech2-SoSe14-PRP2
 
 Programmieren Labor Mechatroniker HAW Hamburg
 
-## TODO:
+## TODO PRP2-A3:
+**all the exercise**
+
+
+## TODO PRP2-A2 dev:
 
 #####AT_END: 
 * **current behaviour is not good**
