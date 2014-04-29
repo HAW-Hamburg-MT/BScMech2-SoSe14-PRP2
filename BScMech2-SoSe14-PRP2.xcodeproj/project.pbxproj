@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2F027576190E2A9D002BF70D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F027575190E2A9D002BF70D /* main.c */; };
-		2F027578190E2A9D002BF70D /* PRP2_A3.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F027577190E2A9D002BF70D /* PRP2_A3.1 */; };
 		2F027584190E2ADB002BF70D /* festoFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F02757C190E2ADB002BF70D /* festoFunctions.c */; };
 		2F027585190E2ADB002BF70D /* listDatabase.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F02757E190E2ADB002BF70D /* listDatabase.c */; };
 		2F027586190E2ADB002BF70D /* mycbw.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F027580190E2ADB002BF70D /* mycbw.c */; };
 		2F027587190E2ADB002BF70D /* stateMachine.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F027582190E2ADB002BF70D /* stateMachine.c */; };
+		2F100007190FC26B00E5B454 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F100006190FC26B00E5B454 /* main.c */; };
+		2F10000F190FC2A900E5B454 /* listDatabase.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F10000D190FC2A900E5B454 /* listDatabase.c */; };
 		2F51804A18D9A500002701AC /* functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F51804918D9A500002701AC /* functions.c */; };
 		2F6E2EDC18D8A60900BE08FC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E2EDB18D8A60900BE08FC /* main.c */; };
 		2F6E2EDE18D8A60900BE08FC /* PRP2_A1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F6E2EDD18D8A60900BE08FC /* PRP2_A1.1 */; };
@@ -30,7 +31,15 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				2F027578190E2A9D002BF70D /* PRP2_A3.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		2F100002190FC26B00E5B454 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -58,7 +67,6 @@
 /* Begin PBXFileReference section */
 		2F027573190E2A9D002BF70D /* PRP2-A3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PRP2-A3"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F027575190E2A9D002BF70D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		2F027577190E2A9D002BF70D /* PRP2_A3.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = PRP2_A3.1; sourceTree = "<group>"; };
 		2F02757C190E2ADB002BF70D /* festoFunctions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = festoFunctions.c; sourceTree = "<group>"; };
 		2F02757D190E2ADB002BF70D /* festoFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = festoFunctions.h; sourceTree = "<group>"; };
 		2F02757E190E2ADB002BF70D /* listDatabase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = listDatabase.c; sourceTree = "<group>"; };
@@ -67,6 +75,10 @@
 		2F027581190E2ADB002BF70D /* mycbw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mycbw.h; sourceTree = "<group>"; };
 		2F027582190E2ADB002BF70D /* stateMachine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stateMachine.c; sourceTree = "<group>"; };
 		2F027583190E2ADB002BF70D /* stateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stateMachine.h; sourceTree = "<group>"; };
+		2F100004190FC26B00E5B454 /* PRP2-A3list */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PRP2-A3list"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F100006190FC26B00E5B454 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		2F10000D190FC2A900E5B454 /* listDatabase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = listDatabase.c; sourceTree = "<group>"; };
+		2F10000E190FC2A900E5B454 /* listDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listDatabase.h; sourceTree = "<group>"; };
 		2F51804918D9A500002701AC /* functions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = functions.c; sourceTree = "<group>"; };
 		2F51804B18D9A51E002701AC /* functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
 		2F6E2ED918D8A60900BE08FC /* PRP2-A1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PRP2-A1"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +98,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		2F027570190E2A9D002BF70D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F100001190FC26B00E5B454 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -112,23 +131,33 @@
 		2F027574190E2A9D002BF70D /* PRP2-A3 */ = {
 			isa = PBXGroup;
 			children = (
-				2F02757C190E2ADB002BF70D /* festoFunctions.c */,
-				2F02757D190E2ADB002BF70D /* festoFunctions.h */,
-				2F02757E190E2ADB002BF70D /* listDatabase.c */,
-				2F02757F190E2ADB002BF70D /* listDatabase.h */,
-				2F027580190E2ADB002BF70D /* mycbw.c */,
-				2F027581190E2ADB002BF70D /* mycbw.h */,
-				2F027582190E2ADB002BF70D /* stateMachine.c */,
-				2F027583190E2ADB002BF70D /* stateMachine.h */,
 				2F027575190E2A9D002BF70D /* main.c */,
-				2F027577190E2A9D002BF70D /* PRP2_A3.1 */,
+				2F02757D190E2ADB002BF70D /* festoFunctions.h */,
+				2F02757C190E2ADB002BF70D /* festoFunctions.c */,
+				2F02757F190E2ADB002BF70D /* listDatabase.h */,
+				2F02757E190E2ADB002BF70D /* listDatabase.c */,
+				2F027583190E2ADB002BF70D /* stateMachine.h */,
+				2F027582190E2ADB002BF70D /* stateMachine.c */,
+				2F027581190E2ADB002BF70D /* mycbw.h */,
+				2F027580190E2ADB002BF70D /* mycbw.c */,
 			);
 			path = "PRP2-A3";
+			sourceTree = "<group>";
+		};
+		2F100005190FC26B00E5B454 /* PRP2-A3list */ = {
+			isa = PBXGroup;
+			children = (
+				2F100006190FC26B00E5B454 /* main.c */,
+				2F10000E190FC2A900E5B454 /* listDatabase.h */,
+				2F10000D190FC2A900E5B454 /* listDatabase.c */,
+			);
+			path = "PRP2-A3list";
 			sourceTree = "<group>";
 		};
 		2F6E2EBF18D8A59700BE08FC = {
 			isa = PBXGroup;
 			children = (
+				2F100005190FC26B00E5B454 /* PRP2-A3list */,
 				2F027574190E2A9D002BF70D /* PRP2-A3 */,
 				2FD31FBA18FBD19300A8048A /* PRP2-A2 */,
 				2F6E2EDA18D8A60900BE08FC /* PRP2-A1 */,
@@ -142,6 +171,7 @@
 				2F6E2ED918D8A60900BE08FC /* PRP2-A1 */,
 				2F854FD418FA81B20029EB14 /* PRP2-A2 */,
 				2F027573190E2A9D002BF70D /* PRP2-A3 */,
+				2F100004190FC26B00E5B454 /* PRP2-A3list */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -191,6 +221,23 @@
 			name = "PRP2-A3";
 			productName = "PRP2-A3";
 			productReference = 2F027573190E2A9D002BF70D /* PRP2-A3 */;
+			productType = "com.apple.product-type.tool";
+		};
+		2F100003190FC26B00E5B454 /* PRP2-A3list */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F10000A190FC26B00E5B454 /* Build configuration list for PBXNativeTarget "PRP2-A3list" */;
+			buildPhases = (
+				2F100000190FC26B00E5B454 /* Sources */,
+				2F100001190FC26B00E5B454 /* Frameworks */,
+				2F100002190FC26B00E5B454 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PRP2-A3list";
+			productName = "PRP2-A3list";
+			productReference = 2F100004190FC26B00E5B454 /* PRP2-A3list */;
 			productType = "com.apple.product-type.tool";
 		};
 		2F6E2ED818D8A60900BE08FC /* PRP2-A1 */ = {
@@ -251,6 +298,7 @@
 				2F6E2ED818D8A60900BE08FC /* PRP2-A1 */,
 				2F854FD318FA81B20029EB14 /* PRP2-A2 */,
 				2F027572190E2A9D002BF70D /* PRP2-A3 */,
+				2F100003190FC26B00E5B454 /* PRP2-A3list */,
 			);
 		};
 /* End PBXProject section */
@@ -265,6 +313,15 @@
 				2F027586190E2ADB002BF70D /* mycbw.c in Sources */,
 				2F027584190E2ADB002BF70D /* festoFunctions.c in Sources */,
 				2F027587190E2ADB002BF70D /* stateMachine.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F100000190FC26B00E5B454 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F10000F190FC2A900E5B454 /* listDatabase.c in Sources */,
+				2F100007190FC26B00E5B454 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +361,24 @@
 			name = Debug;
 		};
 		2F02757A190E2A9D002BF70D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2F10000B190FC26B00E5B454 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2F10000C190FC26B00E5B454 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -424,6 +499,15 @@
 			buildConfigurations = (
 				2F027579190E2A9D002BF70D /* Debug */,
 				2F02757A190E2A9D002BF70D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F10000A190FC26B00E5B454 /* Build configuration list for PBXNativeTarget "PRP2-A3list" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F10000B190FC26B00E5B454 /* Debug */,
+				2F10000C190FC26B00E5B454 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

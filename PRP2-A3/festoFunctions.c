@@ -27,10 +27,6 @@
 //#include "cbw.h"
 
 
-#define TRUE 1
-#define FALSE 0
-
-
 typedef unsigned short int Byte;
 
 
