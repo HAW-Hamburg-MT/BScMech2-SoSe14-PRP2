@@ -1,15 +1,16 @@
 /*
- * file: systemFunctions.h
+ * file: festoFunctions.h
  * project: BScMech2-SoSe14-PRP2
- * version: 1.3.2 (22.04.2014 15:00)
- * - 0.9 first Version (not tested with real machine)
- * - 1.0 stable and tested for PRP2-A1
- * - 1.1 motor safety added
- * - 1.2 new function setOutput added
+ * version: 1.4.0 (01.05.2014 10:00)
+ * - 0.9.0 first Version (not tested with real machine)
+ * - 1.0.0 stable and tested for PRP2-A1
+ * - 1.1.0 motor safety added
+ * - 1.2.0 new function setOutput added
  * - 1.2.1 several bugfixes and isTriggered enhanced
- * - 1.3 isTriggered rewritten
+ * - 1.3.0 isTriggered rewritten
  * - 1.3.1 bug in setBitInOutput motor safety fixed
  * - 1.3.2 updateProcessImage logic improved
+ * - 1.4.0 new functions saveActors and restoreActors
  *
  *
  * Created by Jannik Beyerstedt
@@ -27,7 +28,7 @@
 #define BNR 0
 
 #define E_SAVE     0x0088   // safe/ reset actors state (motorStop + Light_RD)
-#define ALL_ON     0x0FFF   // all values
+#define ALL_VALUES 0x0FFF   // all values 1
 #define RST_MOTOR  0x000F   // to clear all motor values
 #define RST_LIGHT  0x00E0   // all LIGHTs
 
@@ -68,6 +69,10 @@
 // 1000.1111.1111 mask for all sensors where isTriggered is valid
 #define IS_TRIG_VALID  0x08ff
 
+/*
+ * specifications:
+ * - functions of type int: return -1 for error, 1 for TRUE, 0 for FALSE
+ */
 
 typedef unsigned short Image;
 
@@ -84,6 +89,9 @@ int isTriggered (Image mask, int state); // ERROR == -1 !
 void setBitInOutput (Image mask);   // gets bitmask and sets these bits in processimage (actors)
 void clearBitInOutput (Image mask); // gets bitmask and deletes these bits in processimage (actors)
 void setOutput (Image mask);        // sets (completely) a new output state
-void resetOutputs ();               // sets all actors to a save value and writes to output ports (e.g. E-Stop)
+void resetOutputs ();               // sets actors to a save value and writes to output (e.g. E-Stop)
+
+void saveActors ();                 // save current actor image
+void restoreActors ();              // restores actors from last saved actors image
 
 #endif

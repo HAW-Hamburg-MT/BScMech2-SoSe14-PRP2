@@ -1,15 +1,16 @@
 /*
- * file: systemFunctions.h
+ * file: festoFunctions.c
  * project: BScMech2-SoSe14-PRP2
- * version: 1.3.2 (22.04.2014 15:00)
- * - 0.9 first Version (not tested with real machine)
- * - 1.0 stable and tested for PRP2-A1
- * - 1.1 motor safety added
- * - 1.2 new function setOutput added
+ * version: 1.4.0 (01.05.2014 10:00)
+ * - 0.9.0 first Version (not tested with real machine)
+ * - 1.0.0 stable and tested for PRP2-A1
+ * - 1.1.0 motor safety added
+ * - 1.2.0 new function setOutput added
  * - 1.2.1 several bugfixes and isTriggered enhanced
- * - 1.3 isTriggered rewritten
+ * - 1.3.0 isTriggered rewritten
  * - 1.3.1 bug in setBitInOutput motor safety fixed
  * - 1.3.2 updateProcessImage logic improved
+ * - 1.4.0 new functions saveActors and restoreActors
  *
  *
  * Created by Jannik Beyerstedt
@@ -35,6 +36,8 @@ Image sensorsImage = 0x0000;
 Image changed0to1 = 0x0000;
 Image changed1to0 = 0x0000;
 Image lastReadingImage = 0x0000;
+
+Image actorsImageStore = 0x0000;
 
 
 void initializeSystem() {
@@ -166,6 +169,14 @@ void setOutput (Image mask) {       // sets output to mask
 
 void resetOutputs () {              // sets all actors to a save value and writes to output ports (e.g. E-Stop)
     actorsImage = E_SAVE;
-    
-    printf("\n -----RESET FUNCTION TRIGGERED----- \n");
+}
+
+void saveActors () {
+    actorsImageStore = actorsImage;
+    printf("INFO: actorsImage saved");
+}
+
+void restoreActors () {
+    actorsImage = actorsImageStore;
+    printf("INFO: actorsImage restored");
 }
