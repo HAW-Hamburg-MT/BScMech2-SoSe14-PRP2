@@ -3,6 +3,7 @@
  * project: BScMech2-SoSe14-PRP2
  * version: 0.1 (27.04.2014 14:30)
  * - 0.1 first version
+ * - 0.2 updated for emergency stop functions implemented in stateMachine
  *
  *
  * Created by Jannik Beyerstedt
@@ -33,15 +34,9 @@ int main() {
         
         updateProcessImage();
         
-        // Emergency function
-        if (isTriggered(BTN_ESTOP, 0)) {
-            resetOutputs();
-        } else {
-            // !-- code for normal execution HERE --!
-            
-            theMachine();
-            
-        }// END EMERGENCY
+        // !-- code for normal execution HERE --!
+        theMachine();
+        
         
         applyProcessToOutput();
     }

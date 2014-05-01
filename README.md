@@ -7,9 +7,8 @@ Programmieren Labor Mechatroniker HAW Hamburg
 
 ### TODO:
 
-1. **all the exercise**  
-1. rewrite state machine  
-2. write list operations
+1. listDatabase: deleteLast
+2. listDatabase: ouputList
 
 ### Requirements
 
