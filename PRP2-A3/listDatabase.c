@@ -1,10 +1,11 @@
 /*
  * file: listDatabase.c
  * project: BScMech2-SoSe14-PRP2
- * version: 0.3 (01.05.2014 12:15)
+ * version: 0.4 (04.05.2014 21:00)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
  * - 0.3 many safety functions added
+ * - 0.4 outputList basic function
  *
  *
  * Created by Jannik Beyerstedt
@@ -16,8 +17,7 @@
  * festo conveyor belt system - exercise 3
  */
 
-// TODO: outpuList
-// TODO: deleteLast
+// TODO: outputList filename with date stamp
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -207,10 +207,24 @@ int deleteLast () {
         printf("ERROR: deleteFirst: no list or no firstNode\n");
         return 0;
     }else {
-        // +++ TODO +++
-        printf("SOMETHING TODO HERE\n");
+        struct listNode *deletedNode = getNode(list->length);
+        struct listNode *secondLastNode = getNode(list->length -1);
         
-        return 1;
+        if (list->length > 1) {
+            list->lastNodePtr = secondLastNode;
+            secondLastNode->nextNode = NULL;
+            free(deletedNode);
+            list->length -= 1;
+            return 1;
+        }else if (list->length == 1) {
+            free(deletedNode);
+            list->firstNodePtr = NULL;
+            list->lastNodePtr = NULL;
+            list->length -= 1;
+            return 1;
+        }else {
+            return 0;
+        }
     }// end list safety
 }
 
@@ -236,8 +250,41 @@ int outputList () {
         printf("ERROR: deleteFirst: no list or no firstNode\n");
         return 0;
     }else {
-        // +++ TODO +++
-        printf("SOMETHING TODO HERE\n");
+        FILE *file;
+        
+        // +++ TODO: "dynamic" filename
+        char *filename = "test.txt";
+        
+        file = fopen(filename, "w");
+        if (file == NULL) { // output safety
+            printf("ERROR: outputListe: can not create file output\n");
+            return 0;
+        }else {// normal operation
+            
+            fprintf(file, "item No.; input time; height ok (Y/N); metal (Y/N); output time\n");
+            printf( "item No.; input time; height ok (Y/N); metal (Y/N); output time\n");
+            
+            for (int i = 1; i <= list->length; i++) {//every node
+                // print item number
+                fprintf(file, "%i;", i);
+                printf("%i;", i);
+                
+                fprintf(file, "%s;", ctime(getData(i, 1)));
+                printf("%s;", ctime(getData(i, 1)));
+                fprintf(file, "%i;", *(Boolean *) getData(i, 2));
+                printf("%i;", *(Boolean *) getData(i, 2));
+                fprintf(file, "%i;", *(Boolean *) getData(i, 3));
+                printf("%i;", *(Boolean *) getData(i, 3));
+                fprintf(file, "%s;", ctime(getData(i, 4)));
+                printf("%s;", ctime(getData(i, 4)));
+                
+                fprintf(file, "/n");
+                printf("/n");
+            }
+            
+            fclose(file);
+            
+        }// end output safety
 
         
         return 1;

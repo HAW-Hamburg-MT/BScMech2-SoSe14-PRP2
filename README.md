@@ -7,8 +7,7 @@ Programmieren Labor Mechatroniker HAW Hamburg
 
 ### TODO:
 
-1. listDatabase: deleteLast
-2. listDatabase: ouputList
+1. listDatabase: ouputList - filename with date stamp
 
 ### Requirements
 
