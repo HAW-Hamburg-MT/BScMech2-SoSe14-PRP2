@@ -1,11 +1,12 @@
 /*
  * file: listDatabase.c
  * project: BScMech2-SoSe14-PRP2
- * version: 0.4 (04.05.2014 21:00)
+ * version: 0.5 (05.05.2014 14:00)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
  * - 0.3 many safety functions added
  * - 0.4 outputList basic function
+ * - 0.5 outputList ready with unique filename
  *
  *
  * Created by Jannik Beyerstedt
@@ -17,11 +18,11 @@
  * festo conveyor belt system - exercise 3
  */
 
-// TODO: outputList filename with date stamp
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 #include "listDatabase.h"
 
 
@@ -251,9 +252,13 @@ int outputList () {
         return 0;
     }else {
         FILE *file;
+        struct tm *tvar;
         
-        // +++ TODO: "dynamic" filename
-        char *filename = "test.txt";
+        // "dynamic" filename
+        time_t tnow = time(NULL);
+        tvar = localtime(&tnow);
+        char filename[40];
+        sprintf(filename, "prpOutput_%04i%02i%02iT%02i%02i%02i.txt",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
         
         file = fopen(filename, "w");
         if (file == NULL) { // output safety
@@ -262,30 +267,34 @@ int outputList () {
         }else {// normal operation
             
             fprintf(file, "item No.; input time; height ok (Y/N); metal (Y/N); output time\n");
-            printf( "item No.; input time; height ok (Y/N); metal (Y/N); output time\n");
+            printf( "item No.; input time;           height ok (Y/N); metal (Y/N); output time\n");
             
             for (int i = 1; i <= list->length; i++) {//every node
                 // print item number
-                fprintf(file, "%i;", i);
-                printf("%i;", i);
+                fprintf(file, "%i    ;", i);
+                printf("%i;        ", i);
                 
-                fprintf(file, "%s;", ctime(getData(i, 1)));
-                printf("%s;", ctime(getData(i, 1)));
+                tvar = localtime(getData(i,1));
+                fprintf(file, "%04i-%02i-%02i T%02i:%02i:%02i;",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+                printf("%04i-%02i-%02i T%02i:%02i:%02i; ",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+                
                 fprintf(file, "%i;", *(Boolean *) getData(i, 2));
-                printf("%i;", *(Boolean *) getData(i, 2));
+                printf("%i;               ", *(Boolean *) getData(i, 2));
                 fprintf(file, "%i;", *(Boolean *) getData(i, 3));
-                printf("%i;", *(Boolean *) getData(i, 3));
-                fprintf(file, "%s;", ctime(getData(i, 4)));
-                printf("%s;", ctime(getData(i, 4)));
+                printf("%i;           ", *(Boolean *) getData(i, 3));
                 
-                fprintf(file, "/n");
-                printf("/n");
+                tvar = localtime(getData(i,1));
+                fprintf(file, "%04i-%02i-%02i T%02i:%02i:%02i;",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+                printf("%04i-%02i-%02i T%02i:%02i:%02i; ",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+                
+                fprintf(file, "\n");
+                printf("\n");
             }
             
             fclose(file);
             
         }// end output safety
-
+        
         
         return 1;
     }// end list safety

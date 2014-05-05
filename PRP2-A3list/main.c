@@ -16,20 +16,23 @@ int main()
     initializeList();
     
     addNodeAtEnd();
-    addNodeAtEnd();
-    
     addNodeAtStart();
     
-    addDataToLastNode(50, TRUE, FALSE, 100);
+    int info = 50;
+    addDataToLastNode(1, &info);
+    Boolean info2 = TRUE;
+    addDataToLastNode(2, &info2);
+    info2 = FALSE;
+    addDataToLastNode(3, &info2);
+    info = 100;
+    addDataToLastNode(4, &info);
+    
     
     time(getData(1, 1)); // save current time to 1st node, 1st cell
     
+    outputList();
     
-    time_t var = *(time_t *)getData(1, 1);
     
-    
-    printf("%s", ctime(&var));
-    
-    return 0;
+    return 1;
 }
 

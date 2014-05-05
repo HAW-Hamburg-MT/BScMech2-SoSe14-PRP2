@@ -1,9 +1,12 @@
 /*
- * file: listDatabase.h
+ * file: listDatabase.c
  * project: BScMech2-SoSe14-PRP2
- * version: 0.2 (29.04.2014 15:30)
+ * version: 0.5 (05.05.2014 14:00)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
+ * - 0.3 many safety functions added
+ * - 0.4 outputList basic function
+ * - 0.5 outputList ready with unique filename
  *
  *
  * Created by Jannik Beyerstedt
@@ -15,12 +18,13 @@
  * festo conveyor belt system - exercise 3
  */
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+#include "listDatabase.h"
 
-
-typedef enum {FALSE, TRUE} Boolean;
 
 struct listNode {
     time_t inputTime;
@@ -39,60 +43,120 @@ struct listValues {
 struct listValues *list = NULL;
 
 
-void initializeList () {
-    list = malloc(sizeof(struct listValues));
-    list->length = 0;
-    list->firstNodePtr = NULL;
-    list->lastNodePtr = NULL;
-}
 
-void addDataToLastNode (time_t a, Boolean b, Boolean c, time_t d) {
-    list->lastNodePtr->inputTime = a;
-    list->lastNodePtr->height = b;
-    list->lastNodePtr->metal = c;
-    list->lastNodePtr->outputTime = d;
-}
-
-void addDataToLastNode2 (int pos, void *info) {
-    switch (pos) {
-        case 1:
-            list->lastNodePtr->inputTime = *(time_t *)info;
-            break;
-        case 2:
-            list->lastNodePtr->height = *(Boolean *)info;
-            break;
-        case 3:
-            list->lastNodePtr->metal = *(Boolean *)info;
-            break;
-        case 4:
-            list->lastNodePtr->outputTime = *(time_t *)info;
-            break;
-    }
-}
-
-struct listNode * getNode (unsigned int pos) {
-    struct listNode *nodePtr = list->firstNodePtr;
-    
-    if (pos == 1) {
-        return nodePtr;
-    }else if (pos > 1) {
-        for (int i = 1; i < pos; i++) {
-            nodePtr = nodePtr->nextNode;
-        }
-        return nodePtr;
-        
+int initializeList () {
+    if (list == NULL) { // only add a new list, if there is no list initialized
+        list = malloc(sizeof(struct listValues));
+        list->length = 0;
+        list->firstNodePtr = NULL;
+        list->lastNodePtr = NULL;
+        return 1;
     }else {
-        return NULL;
-    }
+        printf("ERROR: initializeList: there is already a list\n");
+        return 0;
+    }// end list safety
 }
 
-void *getData (unsigned int pos, unsigned int cell) {
-    if (pos == 0 || cell == 0) {
+int addNodeAtEnd () {
+    if (list == NULL) { // only att nodes, if list initialized
+        printf("ERROR: addNodeAtEnd: there is no list");
+        return 0;
+    }else {
+        struct listNode *secondLastNode = list->lastNodePtr;
+        
+        list->lastNodePtr = malloc(sizeof(struct listNode));
+        list->length += 1;
+        
+        if (list->firstNodePtr == NULL) { // add very first element
+            list->firstNodePtr = list->lastNodePtr;
+            list->lastNodePtr->nextNode = NULL;
+        }else {
+            secondLastNode->nextNode = list->lastNodePtr;
+        }
+        return 1;
+    }// end list safety
+}
+
+int addNodeAtStart () {
+    if (list == NULL) { // only add nodes, if list initialized
+        printf("ERROR: addNodeAtEnd: there is no list");
+        return 0;
+    }else {
+        struct listNode *secondNode = list->firstNodePtr;
+        
+        list->firstNodePtr = malloc(sizeof(struct listNode));
+        list->length += 1;
+        
+        if (list->lastNodePtr == NULL) { // add very first element
+            list->lastNodePtr = list->firstNodePtr;
+            list->firstNodePtr->nextNode = NULL;
+        }else {                         // add second+ element
+            list->firstNodePtr->nextNode = secondNode;
+        }
+        return 1;
+    }// end list safety
+}
+
+
+int addDataToLastNode (int cellNo, void *info) {
+    if (list == NULL || list->lastNodePtr == NULL) { // list safety
+        printf("ERROR: addDataToLastNode: no list or no node");
+        return 0;
+    }else {
+        switch (cellNo) {
+            case 1:
+                list->lastNodePtr->inputTime = *(time_t *)info;
+                break;
+            case 2:
+                list->lastNodePtr->height = *(Boolean *)info;
+                break;
+            case 3:
+                list->lastNodePtr->metal = *(Boolean *)info;
+                break;
+            case 4:
+                list->lastNodePtr->outputTime = *(time_t *)info;
+                break;
+            default:
+                printf("ERROR: addDataToLastNode: invalid cell number\n");
+                break;
+        }
+        return 1;
+    }// end list safety
+}
+
+struct listNode * getNode (unsigned int nodeNo) {
+    if (list == NULL || list->firstNodePtr == NULL) { // list safety
+        printf("ERROR: getNode: no list or no firstNode\n");
+        return NULL;
+    }else {
+        struct listNode *nodePtr = list->firstNodePtr;
+        
+        if (nodeNo == 1) {
+            return nodePtr;
+        }else if (nodeNo > 1) {
+            for (int i = 1; i < nodeNo; i++) {
+                nodePtr = nodePtr->nextNode;
+            }
+            return nodePtr;
+            
+        }else {
+            printf("ERROR: getNode: invalid nodePos number\n");
+            return NULL;
+        }
+    }// end list safety
+}
+
+void *getData (unsigned int nodePos, unsigned int cellPos) {
+    if (nodePos == 0 || cellPos == 0 || list == NULL) {
+        printf("ERROR: getData: invalis nodePos or cellPos number\n");
         return  NULL;
     }else {
-        struct listNode *nodePtr = getNode(pos);
+        struct listNode *nodePtr = getNode(nodePos);
+        if (nodePtr == NULL) { // getNode safety
+            return NULL;
+        }// end getNode safety
         
-        switch (cell) {
+        switch (cellPos) {
             case 1:
                 return &nodePtr->inputTime;
                 break;
@@ -107,73 +171,66 @@ void *getData (unsigned int pos, unsigned int cell) {
                 break;
                 
             default:
+                printf("ERROR: getData: other error\n");
                 return NULL;
                 break;
         }
-        
-        
-    }
+    }// end position and list safety
 }
 
-
-
-void addNodeAtStart () {
-    struct listNode *secondNode = list->firstNodePtr;
-    
-    list->firstNodePtr = malloc(sizeof(struct listNode));
-    list->length += 1;
-    
-    if (list->lastNodePtr == NULL) { // add very first element
-        list->lastNodePtr = list->firstNodePtr;
-        list->firstNodePtr->nextNode = NULL;
-    }else {                         // add second+ element
-        list->firstNodePtr->nextNode = secondNode;
-    }
-}
-
-void addNodeAtEnd () {
-    struct listNode *secondLastNode = list->lastNodePtr;
-    
-    list->lastNodePtr = malloc(sizeof(struct listNode));
-    list->length += 1;
-    
-    if (list->firstNodePtr == NULL) { // add very first element
-        list->firstNodePtr = list->lastNodePtr;
-        list->lastNodePtr->nextNode = NULL;
-    }else {
-        secondLastNode->nextNode = list->lastNodePtr;
-    }
-}
 
 int deleteFirst () {
-    struct listNode *deletedNode = list->firstNodePtr;
-    
-    if (list->length > 1){
-        list->firstNodePtr = list->firstNodePtr->nextNode;
-        free(deletedNode);
-        list->length -= 1;
-        return 1;
-    }else if (list->length == 1) {
-        free(deletedNode);
-        list->firstNodePtr = NULL;
-        list->lastNodePtr = NULL;
-        list->length -= 1;
-        return 1;
-    }else {
+    if (list == NULL || list->firstNodePtr == NULL) { // list safety
+        printf("ERROR: deleteFirst: no list or no firstNode\n");
         return 0;
-    }
+    }else {
+        struct listNode *deletedNode = list->firstNodePtr;
+        
+        if (list->length > 1){
+            list->firstNodePtr = list->firstNodePtr->nextNode;
+            free(deletedNode);
+            list->length -= 1;
+            return 1;
+        }else if (list->length == 1) {
+            free(deletedNode);
+            list->firstNodePtr = NULL;
+            list->lastNodePtr = NULL;
+            list->length -= 1;
+            return 1;
+        }else {
+            return 0;
+        }
+    }// end list safety
 }
 
 int deleteLast () {
-    // TODO
-    
-    
-    return 0;
+    if (list == NULL || list->firstNodePtr == NULL) { // list safety
+        printf("ERROR: deleteFirst: no list or no firstNode\n");
+        return 0;
+    }else {
+        struct listNode *deletedNode = getNode(list->length);
+        struct listNode *secondLastNode = getNode(list->length -1);
+        
+        if (list->length > 1) {
+            list->lastNodePtr = secondLastNode;
+            secondLastNode->nextNode = NULL;
+            free(deletedNode);
+            list->length -= 1;
+            return 1;
+        }else if (list->length == 1) {
+            free(deletedNode);
+            list->firstNodePtr = NULL;
+            list->lastNodePtr = NULL;
+            list->length -= 1;
+            return 1;
+        }else {
+            return 0;
+        }
+    }// end list safety
 }
 
 int deleteList () {
-    
-    if (list == NULL) {
+    if (list == NULL) { // list safety
         return 0;
     }else {
         //while (deleteFirst()) {;}
@@ -185,5 +242,60 @@ int deleteList () {
         list = NULL;
         
         return 1;
-    }
+    }// end list safety
+}
+
+
+int outputList () {
+    if (list == NULL || list->firstNodePtr == NULL) { // list safety
+        printf("ERROR: deleteFirst: no list or no firstNode\n");
+        return 0;
+    }else {
+        FILE *file;
+        struct tm *tvar;
+        
+        // "dynamic" filename
+        time_t tnow = time(NULL);
+        tvar = localtime(&tnow);
+        char filename[40];
+        sprintf(filename, "prpOutput_%04i%02i%02iT%02i%02i%02i.txt",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+        
+        file = fopen(filename, "w");
+        if (file == NULL) { // output safety
+            printf("ERROR: outputListe: can not create file output\n");
+            return 0;
+        }else {// normal operation
+            
+            fprintf(file, "item No.; input time; height ok (Y/N); metal (Y/N); output time\n");
+            printf( "item No.; input time;           height ok (Y/N); metal (Y/N); output time\n");
+            
+            for (int i = 1; i <= list->length; i++) {//every node
+                // print item number
+                fprintf(file, "%i    ;", i);
+                printf("%i;        ", i);
+                
+                tvar = localtime(getData(i,1));
+                fprintf(file, "%04i-%02i-%02i T%02i:%02i:%02i;",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+                printf("%04i-%02i-%02i T%02i:%02i:%02i; ",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+                
+                fprintf(file, "%i;", *(Boolean *) getData(i, 2));
+                printf("%i;               ", *(Boolean *) getData(i, 2));
+                fprintf(file, "%i;", *(Boolean *) getData(i, 3));
+                printf("%i;           ", *(Boolean *) getData(i, 3));
+                
+                tvar = localtime(getData(i,1));
+                fprintf(file, "%04i-%02i-%02i T%02i:%02i:%02i;",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+                printf("%04i-%02i-%02i T%02i:%02i:%02i; ",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+                
+                fprintf(file, "\n");
+                printf("\n");
+            }
+            
+            fclose(file);
+            
+        }// end output safety
+        
+        
+        return 1;
+    }// end list safety
 }

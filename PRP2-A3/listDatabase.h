@@ -1,11 +1,12 @@
 /*
  * file: listDatabase.h
  * project: BScMech2-SoSe14-PRP2
- *  version: 0.4 (04.05.2014 21:00)
+ * version: 0.5 (05.05.2014 14:00)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
  * - 0.3 many safety functions added
  * - 0.4 outputList basic function
+ * - 0.5 outputList ready with unique filename
  *
  *
  * Created by Jannik Beyerstedt
@@ -17,7 +18,6 @@
  * festo conveyor belt system - exercise 3
  */
 
-// TODO: outputList filename with date stamp
 
 #ifndef LISTDATABASE_H
 #define	LISTDATABASE_H
