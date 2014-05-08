@@ -18,7 +18,6 @@
  * festo conveyor belt system - exercise 3
  */
 
-
 #ifndef LISTDATABASE_H
 #define	LISTDATABASE_H
 
@@ -38,7 +37,7 @@ typedef enum {FALSE, TRUE} Boolean;
  * - information are transferred as void pointers
  * - you should do an expicit type transformation to get the "right" pointer type
  * - functions, that return a pointer will return NULL if an error occurred
- * - functions with type int will return 0 if an error occurred (e.g empty list), else 1
+ * - functions of type int will return 0 if an error occurred (e.g empty list), else 1
  */
 
 int initializeList ();      // starts a new list (with no nodes)

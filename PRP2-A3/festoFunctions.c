@@ -47,7 +47,6 @@ void initializeSystem() {
     cbDConfigPort(BNR, FIRSTPORTCH, DIGITALIN);
 }
 
-
 void updateProcessImage() { // reads all sensor values AND sorts by 0->1 and 1->0 changes
     Byte reading = 0x00;
     Image changedYes = 0x0000;

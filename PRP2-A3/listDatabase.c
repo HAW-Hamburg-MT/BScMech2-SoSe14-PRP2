@@ -18,7 +18,6 @@
  * festo conveyor belt system - exercise 3
  */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -258,7 +257,7 @@ int outputList () {
         time_t tnow = time(NULL);
         tvar = localtime(&tnow);
         char filename[40];
-        sprintf(filename, "prpOutput_%04i%02i%02iT%02i%02i%02i.csv",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
+        sprintf(filename, "prpOutput_%04i%02i%02iT%02i%02i%02i.csv", tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
         
         file = fopen(filename, "w");
         if (file == NULL) { // output safety

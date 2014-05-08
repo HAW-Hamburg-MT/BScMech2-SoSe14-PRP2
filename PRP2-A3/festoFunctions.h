@@ -25,6 +25,7 @@
 #ifndef BScMech2_SoSe14_PRP2_systemFunctions_h
 #define BScMech2_SoSe14_PRP2_systemFunctions_h
 
+
 #define BNR 0
 
 #define E_SAVE     0x0088   // safe/ reset actors state (motorStop + Light_RD)
@@ -68,6 +69,7 @@
 #define HAS_TRIG_VALID 0x0fcb
 // 1000.1111.1111 mask for all sensors where isTriggered is valid
 #define IS_TRIG_VALID  0x08ff
+
 
 /*
  * specifications:
