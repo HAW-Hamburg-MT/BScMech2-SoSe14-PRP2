@@ -1,6 +1,8 @@
 build/Debug/MinGW-Windows/stateMachine.o: stateMachine.c stateMachine.h \
- systemFunctions.h
+ festoFunctions.h listDatabase.h
 
 stateMachine.h:
 
-systemFunctions.h:
+festoFunctions.h:
+
+listDatabase.h:

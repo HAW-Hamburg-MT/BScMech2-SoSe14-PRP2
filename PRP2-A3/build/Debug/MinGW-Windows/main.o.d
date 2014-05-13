@@ -1,5 +1,5 @@
-build/Debug/MinGW-Windows/main.o: main.c systemFunctions.h stateMachine.h
+build/Debug/MinGW-Windows/main.o: main.c festoFunctions.h stateMachine.h
 
-systemFunctions.h:
+festoFunctions.h:
 
 stateMachine.h:
