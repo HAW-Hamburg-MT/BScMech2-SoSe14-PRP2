@@ -7,7 +7,7 @@ Programmieren Labor Mechatroniker HAW Hamburg
 
 ### TODO:
 
-1. TESTING IN "REAL WORLD" !
+1. update outputList for using a function pointer
 
 ### Requirements
 

@@ -172,10 +172,10 @@ void resetOutputs () {              // sets all actors to a save value and write
 
 void saveActors () {
     actorsImageStore = actorsImage;
-    printf("INFO: actorsImage saved");
+    printf("INFO: actorsImage saved\n");
 }
 
 void restoreActors () {
     actorsImage = actorsImageStore;
-    printf("INFO: actorsImage restored");
+    printf("INFO: actorsImage restored\n");
 }

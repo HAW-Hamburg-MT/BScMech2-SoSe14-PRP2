@@ -1,12 +1,13 @@
 /*
- * file: stateMachine.h
+ * file: stateMachine.c
  * project: BScMech2-SoSe14-PRP2
- * version: 2.0 (01.05.2014 12:30)
+ * version: 2.1 (13.05.2014 13:30)
  * - 0.1 first version
  * - 0.2 first and bugs fixed
- * - 0.3 initial logic enahnced, main must not initialize currentState
+ * - 0.3 initial logic enhanced, main must not initialize currentState
  * - 1.0 tested and OK, state logic enhancements
  * - 2.0 rewritten for PRP2-A3
+ * - 2.1 changes for listDatabase v1.0 + minor bug-fixes
  *
  *
  * Created by Jannik Beyerstedt
@@ -14,7 +15,7 @@
  * Copyright: all code under creative commons license: CC BY-NC-SA 3.0
  *
  *
- * HAW Hamburg - Labor Programmieren 3
+ * HAW Hamburg - Labor Programmieren 2
  * festo conveyor belt system - exercise 3
  */
 

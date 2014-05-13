@@ -1,9 +1,10 @@
 /*
  * file: main.c
  * project: BScMech2-SoSe14-PRP2
- * version: 0.2 (27.04.2014 14:30)
+ * version: 1.0 (13.05.2014 13:30)
  * - 0.1 first version
  * - 0.2 updated for emergency stop functions implemented in stateMachine
+ * - 1.0 stable and tested (for stateMachine v2.0+)
  *
  *
  * Created by Jannik Beyerstedt
@@ -11,7 +12,7 @@
  * Copyright: all code under creative commons licence: CC BY-NC-SA 3.0
  *
  *
- * HAW Hamburg - Labor Programmieren 3
+ * HAW Hamburg - Labor Programmieren 2
  * festo conveyor belt system - excercise 3
  */
 
