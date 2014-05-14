@@ -1,13 +1,14 @@
 /*
  * file: listDatabase.c
  * project: BScMech2-SoSe14-PRP2
- * version: 1.0 (13.05.2014 19:30)
+ * version: 1.1 (14.05.2014 14:15)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
  * - 0.3 many safety functions added
  * - 0.4 outputList basic function
  * - 0.5 outputList ready with unique filename
  * - 1.0 major changes
+ * - 1.1 enhanced with prewNode pointer
  *
  *
  * Created by Jannik Beyerstedt
@@ -54,7 +55,7 @@ int addNodeAtEnd (list_t list) {
         printf("ERROR: addNodeAtEnd: there is no list");
         return 0;
     }else {
-        listNodePtr secondLastNode = list->lastNodePtr;
+        listNodePtr oldLastNode = list->lastNodePtr;
         
         list->lastNodePtr = malloc(sizeof(struct listNode));
         list->length += 1;
@@ -62,8 +63,11 @@ int addNodeAtEnd (list_t list) {
         if (list->firstNodePtr == NULL) { // add very first element
             list->firstNodePtr = list->lastNodePtr;
             list->lastNodePtr->nextNode = NULL;
+            list->lastNodePtr->prewNode = NULL;
+            list->lastNodePtr->dataPtr = NULL;
         }else {
-            secondLastNode->nextNode = list->lastNodePtr;
+            oldLastNode->nextNode = list->lastNodePtr;
+            list->lastNodePtr->prewNode = oldLastNode;
         }
         return 1;
     }// end list safety
@@ -74,7 +78,7 @@ int addNodeAtStart (list_t list) {
         printf("ERROR: addNodeAtEnd: there is no list");
         return 0;
     }else {
-        listNodePtr secondNode = list->firstNodePtr;
+        listNodePtr newSecondNode = list->firstNodePtr;
         
         list->firstNodePtr = malloc(sizeof(struct listNode));
         list->length += 1;
@@ -82,8 +86,11 @@ int addNodeAtStart (list_t list) {
         if (list->lastNodePtr == NULL) { // add very first element
             list->lastNodePtr = list->firstNodePtr;
             list->firstNodePtr->nextNode = NULL;
+            list->firstNodePtr->prewNode = NULL;
+            list->firstNodePtr->dataPtr = NULL;
         }else {                         // add second+ element
-            list->firstNodePtr->nextNode = secondNode;
+            list->firstNodePtr->nextNode = newSecondNode;
+            newSecondNode->prewNode = list->firstNodePtr;
         }
         return 1;
     }// end list safety
