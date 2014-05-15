@@ -1,7 +1,7 @@
 /*
  * file: listDatabase.c
  * project: BScMech2-SoSe14-PRP2
- * version: 1.1 (14.05.2014 14:15)
+ * version: 1.2 (14.05.2014 15:30)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
  * - 0.3 many safety functions added
@@ -9,6 +9,7 @@
  * - 0.5 outputList ready with unique filename
  * - 1.0 major changes
  * - 1.1 enhanced with prewNode pointer
+ * - 1.2 addNode initializes data with given dataPtr
  *
  *
  * Created by Jannik Beyerstedt
@@ -50,7 +51,8 @@ list_t initializeList () {
         return list;
 }
 
-int addNodeAtEnd (list_t list) {
+
+int addNodeAtEnd (list_t list, listDataPtr dataPtr) {
     if (list == NULL) { // only add nodes, if list initialized
         printf("ERROR: addNodeAtEnd: there is no list");
         return 0;
@@ -64,7 +66,7 @@ int addNodeAtEnd (list_t list) {
             list->firstNodePtr = list->lastNodePtr;
             list->lastNodePtr->nextNode = NULL;
             list->lastNodePtr->prewNode = NULL;
-            list->lastNodePtr->dataPtr = NULL;
+            list->lastNodePtr->dataPtr = dataPtr;
         }else {
             oldLastNode->nextNode = list->lastNodePtr;
             list->lastNodePtr->prewNode = oldLastNode;
@@ -73,7 +75,8 @@ int addNodeAtEnd (list_t list) {
     }// end list safety
 }
 
-int addNodeAtStart (list_t list) {
+
+int addNodeAtStart (list_t list, listDataPtr dataPtr) {
     if (list == NULL) { // only add nodes, if list initialized
         printf("ERROR: addNodeAtEnd: there is no list");
         return 0;
@@ -87,7 +90,7 @@ int addNodeAtStart (list_t list) {
             list->lastNodePtr = list->firstNodePtr;
             list->firstNodePtr->nextNode = NULL;
             list->firstNodePtr->prewNode = NULL;
-            list->firstNodePtr->dataPtr = NULL;
+            list->firstNodePtr->dataPtr = dataPtr;
         }else {                         // add second+ element
             list->firstNodePtr->nextNode = newSecondNode;
             newSecondNode->prewNode = list->firstNodePtr;

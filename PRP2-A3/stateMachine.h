@@ -1,13 +1,14 @@
 /*
  * file: stateMachine.c
  * project: BScMech2-SoSe14-PRP2
- * version: 2.1 (13.05.2014 13:30)
+ * version: 2.2 (14.05.2014 15:30)
  * - 0.1 first version
  * - 0.2 first and bugs fixed
  * - 0.3 initial logic enhanced, main must not initialize currentState
  * - 1.0 tested and OK, state logic enhancements
  * - 2.0 rewritten for PRP2-A3
  * - 2.1 changes for listDatabase v1.0 + minor bug-fixes
+ * - 2.2 changes for listDatabase v1.2
  *
  *
  * Created by Jannik Beyerstedt

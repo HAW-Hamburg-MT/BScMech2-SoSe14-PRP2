@@ -1,7 +1,7 @@
 /*
  * file: listDatabase.c
  * project: BScMech2-SoSe14-PRP2
- * version: 1.1 (14.05.2014 14:15)
+ * version: 1.2 (14.05.2014 15:30)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
  * - 0.3 many safety functions added
@@ -9,6 +9,7 @@
  * - 0.5 outputList ready with unique filename
  * - 1.0 major changes
  * - 1.1 enhanced with prewNode pointer
+ * - 1.2 addNode initializes data with given dataPtr
  *
  *
  * Created by Jannik Beyerstedt
@@ -50,8 +51,8 @@ typedef struct listData *listDataPtr;   // type for (a pointer to) some data
  */
 
 list_t initializeList ();           // starts a new list (with no nodes)
-int addNodeAtEnd (list_t list);     // adds node at end of list
-int addNodeAtStart (list_t list);   // adds node at start of list
+int addNodeAtEnd (list_t list, listDataPtr dataPtr);     // adds node at end of list, initializes data with dataPtr
+int addNodeAtStart (list_t list, listDataPtr dataPtr);   // adds node at start of list, initializes data with dataPtr
 
 listDataPtr getNodeData (list_t list, int nodeNo);
 
