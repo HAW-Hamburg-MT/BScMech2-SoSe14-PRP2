@@ -18,6 +18,15 @@
 		2F6E2EDC18D8A60900BE08FC /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E2EDB18D8A60900BE08FC /* main.c */; };
 		2F6E2EDE18D8A60900BE08FC /* PRP2_A1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F6E2EDD18D8A60900BE08FC /* PRP2_A1.1 */; };
 		2F6E2EE418D8A64000BE08FC /* mycbw.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F6E2EE218D8A64000BE08FC /* mycbw.c */; };
+		2F723C49193A778E00B371D3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F723C48193A778E00B371D3 /* main.cpp */; };
+		2F723C4B193A778E00B371D3 /* PRP2_A4.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2F723C4A193A778E00B371D3 /* PRP2_A4.1 */; };
+		2F723C56193A788300B371D3 /* correctorlineartest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F723C4F193A788300B371D3 /* correctorlineartest.cpp */; };
+		2F723C57193A788300B371D3 /* correctorlookuptabletest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F723C51193A788300B371D3 /* correctorlookuptabletest.cpp */; };
+		2F723C58193A788300B371D3 /* correctortest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F723C53193A788300B371D3 /* correctortest.cpp */; };
+		2F723C5B193A795C00B371D3 /* DataReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F723C59193A795C00B371D3 /* DataReader.cpp */; };
+		2F723C5E193A796C00B371D3 /* CorrectorLinear.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F723C5C193A796C00B371D3 /* CorrectorLinear.cpp */; };
+		2F723C61193A797600B371D3 /* CorrectorLookupTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F723C5F193A797600B371D3 /* CorrectorLookupTable.cpp */; };
+		2F723C64193A799900B371D3 /* Corrector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2F723C62193A799900B371D3 /* Corrector.cpp */; };
 		2FD31FCB18FBD19300A8048A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FD31FBB18FBD19300A8048A /* main.c */; };
 		2FD31FCF18FBD2AF00A8048A /* systemFunctions.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FD31FCE18FBD2AF00A8048A /* systemFunctions.c */; };
 		2FD31FD218FBD3F300A8048A /* mycbw.c in Sources */ = {isa = PBXBuildFile; fileRef = 2FD31FD018FBD3F300A8048A /* mycbw.c */; };
@@ -50,6 +59,25 @@
 			dstSubfolderSpec = 0;
 			files = (
 				2F6E2EDE18D8A60900BE08FC /* PRP2_A1.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		2F723C44193A778E00B371D3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				2F723C4B193A778E00B371D3 /* PRP2_A4.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		2F723C67193AA0DB00B371D3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -86,6 +114,25 @@
 		2F6E2EDD18D8A60900BE08FC /* PRP2_A1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = PRP2_A1.1; sourceTree = "<group>"; };
 		2F6E2EE218D8A64000BE08FC /* mycbw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mycbw.c; sourceTree = "<group>"; };
 		2F6E2EE318D8A64000BE08FC /* mycbw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mycbw.h; sourceTree = "<group>"; };
+		2F723C46193A778E00B371D3 /* PRP2-A4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PRP2-A4"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F723C48193A778E00B371D3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2F723C4A193A778E00B371D3 /* PRP2_A4.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = PRP2_A4.1; sourceTree = "<group>"; };
+		2F723C4F193A788300B371D3 /* correctorlineartest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = correctorlineartest.cpp; sourceTree = "<group>"; };
+		2F723C50193A788300B371D3 /* correctorlineartest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = correctorlineartest.h; sourceTree = "<group>"; };
+		2F723C51193A788300B371D3 /* correctorlookuptabletest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = correctorlookuptabletest.cpp; sourceTree = "<group>"; };
+		2F723C52193A788300B371D3 /* correctorlookuptabletest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = correctorlookuptabletest.h; sourceTree = "<group>"; };
+		2F723C53193A788300B371D3 /* correctortest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = correctortest.cpp; sourceTree = "<group>"; };
+		2F723C54193A788300B371D3 /* correctortest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = correctortest.h; sourceTree = "<group>"; };
+		2F723C55193A788300B371D3 /* ti_assertion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ti_assertion.h; sourceTree = "<group>"; };
+		2F723C59193A795C00B371D3 /* DataReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataReader.cpp; sourceTree = "<group>"; };
+		2F723C5A193A795C00B371D3 /* DataReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataReader.h; sourceTree = "<group>"; };
+		2F723C5C193A796C00B371D3 /* CorrectorLinear.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CorrectorLinear.cpp; sourceTree = "<group>"; };
+		2F723C5D193A796C00B371D3 /* CorrectorLinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectorLinear.h; sourceTree = "<group>"; };
+		2F723C5F193A797600B371D3 /* CorrectorLookupTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CorrectorLookupTable.cpp; sourceTree = "<group>"; };
+		2F723C60193A797600B371D3 /* CorrectorLookupTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorrectorLookupTable.h; sourceTree = "<group>"; };
+		2F723C62193A799900B371D3 /* Corrector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Corrector.cpp; sourceTree = "<group>"; };
+		2F723C63193A799900B371D3 /* Corrector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Corrector.h; sourceTree = "<group>"; };
+		2F723C69193AA0DB00B371D3 /* PRP2-A4a */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PRP2-A4a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F854FD418FA81B20029EB14 /* PRP2-A2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "PRP2-A2"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FD31FBB18FBD19300A8048A /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		2FD31FCD18FBD29F00A8048A /* systemFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = systemFunctions.h; sourceTree = "<group>"; };
@@ -112,6 +159,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2F6E2ED618D8A60900BE08FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F723C43193A778E00B371D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F723C66193AA0DB00B371D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -157,6 +218,7 @@
 		2F6E2EBF18D8A59700BE08FC = {
 			isa = PBXGroup;
 			children = (
+				2F723C47193A778E00B371D3 /* PRP2-A4 */,
 				2F100005190FC26B00E5B454 /* PRP2-A3list */,
 				2F027574190E2A9D002BF70D /* PRP2-A3 */,
 				2FD31FBA18FBD19300A8048A /* PRP2-A2 */,
@@ -172,6 +234,8 @@
 				2F854FD418FA81B20029EB14 /* PRP2-A2 */,
 				2F027573190E2A9D002BF70D /* PRP2-A3 */,
 				2F100004190FC26B00E5B454 /* PRP2-A3list */,
+				2F723C46193A778E00B371D3 /* PRP2-A4 */,
+				2F723C69193AA0DB00B371D3 /* PRP2-A4a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,6 +251,30 @@
 				2F6E2EDD18D8A60900BE08FC /* PRP2_A1.1 */,
 			);
 			path = "PRP2-A1";
+			sourceTree = "<group>";
+		};
+		2F723C47193A778E00B371D3 /* PRP2-A4 */ = {
+			isa = PBXGroup;
+			children = (
+				2F723C48193A778E00B371D3 /* main.cpp */,
+				2F723C5A193A795C00B371D3 /* DataReader.h */,
+				2F723C59193A795C00B371D3 /* DataReader.cpp */,
+				2F723C63193A799900B371D3 /* Corrector.h */,
+				2F723C62193A799900B371D3 /* Corrector.cpp */,
+				2F723C5D193A796C00B371D3 /* CorrectorLinear.h */,
+				2F723C5C193A796C00B371D3 /* CorrectorLinear.cpp */,
+				2F723C60193A797600B371D3 /* CorrectorLookupTable.h */,
+				2F723C5F193A797600B371D3 /* CorrectorLookupTable.cpp */,
+				2F723C54193A788300B371D3 /* correctortest.h */,
+				2F723C53193A788300B371D3 /* correctortest.cpp */,
+				2F723C50193A788300B371D3 /* correctorlineartest.h */,
+				2F723C4F193A788300B371D3 /* correctorlineartest.cpp */,
+				2F723C52193A788300B371D3 /* correctorlookuptabletest.h */,
+				2F723C51193A788300B371D3 /* correctorlookuptabletest.cpp */,
+				2F723C55193A788300B371D3 /* ti_assertion.h */,
+				2F723C4A193A778E00B371D3 /* PRP2_A4.1 */,
+			);
+			path = "PRP2-A4";
 			sourceTree = "<group>";
 		};
 		2FD31FBA18FBD19300A8048A /* PRP2-A2 */ = {
@@ -257,6 +345,40 @@
 			productReference = 2F6E2ED918D8A60900BE08FC /* PRP2-A1 */;
 			productType = "com.apple.product-type.tool";
 		};
+		2F723C45193A778E00B371D3 /* PRP2-A4 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F723C4E193A778E00B371D3 /* Build configuration list for PBXNativeTarget "PRP2-A4" */;
+			buildPhases = (
+				2F723C42193A778E00B371D3 /* Sources */,
+				2F723C43193A778E00B371D3 /* Frameworks */,
+				2F723C44193A778E00B371D3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PRP2-A4";
+			productName = "PRP2-A4";
+			productReference = 2F723C46193A778E00B371D3 /* PRP2-A4 */;
+			productType = "com.apple.product-type.tool";
+		};
+		2F723C68193AA0DB00B371D3 /* PRP2-A4a */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F723C6F193AA0DB00B371D3 /* Build configuration list for PBXNativeTarget "PRP2-A4a" */;
+			buildPhases = (
+				2F723C65193AA0DB00B371D3 /* Sources */,
+				2F723C66193AA0DB00B371D3 /* Frameworks */,
+				2F723C67193AA0DB00B371D3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PRP2-A4a";
+			productName = "PRP2-A4a";
+			productReference = 2F723C69193AA0DB00B371D3 /* PRP2-A4a */;
+			productType = "com.apple.product-type.tool";
+		};
 		2F854FD318FA81B20029EB14 /* PRP2-A2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F854FDA18FA81B20029EB14 /* Build configuration list for PBXNativeTarget "PRP2-A2" */;
@@ -299,6 +421,8 @@
 				2F854FD318FA81B20029EB14 /* PRP2-A2 */,
 				2F027572190E2A9D002BF70D /* PRP2-A3 */,
 				2F100003190FC26B00E5B454 /* PRP2-A3list */,
+				2F723C45193A778E00B371D3 /* PRP2-A4 */,
+				2F723C68193AA0DB00B371D3 /* PRP2-A4a */,
 			);
 		};
 /* End PBXProject section */
@@ -332,6 +456,28 @@
 				2F6E2EE418D8A64000BE08FC /* mycbw.c in Sources */,
 				2F51804A18D9A500002701AC /* functions.c in Sources */,
 				2F6E2EDC18D8A60900BE08FC /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F723C42193A778E00B371D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F723C56193A788300B371D3 /* correctorlineartest.cpp in Sources */,
+				2F723C64193A799900B371D3 /* Corrector.cpp in Sources */,
+				2F723C58193A788300B371D3 /* correctortest.cpp in Sources */,
+				2F723C61193A797600B371D3 /* CorrectorLookupTable.cpp in Sources */,
+				2F723C57193A788300B371D3 /* correctorlookuptabletest.cpp in Sources */,
+				2F723C5B193A795C00B371D3 /* DataReader.cpp in Sources */,
+				2F723C5E193A796C00B371D3 /* CorrectorLinear.cpp in Sources */,
+				2F723C49193A778E00B371D3 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F723C65193AA0DB00B371D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +619,42 @@
 			};
 			name = Release;
 		};
+		2F723C4C193A778E00B371D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2F723C4D193A778E00B371D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2F723C70193AA0DB00B371D3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2F723C71193AA0DB00B371D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		2F854FDB18FA81B20029EB14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -510,6 +692,7 @@
 				2F10000C190FC26B00E5B454 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2F6E2EC318D8A59700BE08FC /* Build configuration list for PBXProject "BScMech2-SoSe14-PRP2" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +711,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2F723C4E193A778E00B371D3 /* Build configuration list for PBXNativeTarget "PRP2-A4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F723C4C193A778E00B371D3 /* Debug */,
+				2F723C4D193A778E00B371D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2F723C6F193AA0DB00B371D3 /* Build configuration list for PBXNativeTarget "PRP2-A4a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F723C70193AA0DB00B371D3 /* Debug */,
+				2F723C71193AA0DB00B371D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		2F854FDA18FA81B20029EB14 /* Build configuration list for PBXNativeTarget "PRP2-A2" */ = {
 			isa = XCConfigurationList;
