@@ -16,6 +16,7 @@ CorrectorLookupTable::CorrectorLookupTable (double x[LOOKUPTABLE_MAX] , double y
         xValues[i] = x[i];
         yValues[i] = y[i];
     }
+    cout << "INFO: CorrectorLookupTable::CorrectorLookupTable - table copied" << endl;
     
     sortTable();
     
@@ -34,11 +35,13 @@ double CorrectorLookupTable::correctValue(double value) {
         y1 = yValues[0];
         x2 = xValues[1];
         y2 = yValues[1];
+        cout << "INFO: correctValue - small value" << endl;
     }else if (value >= xValues[LOOKUPTABLE_MAX-1]) { // higher than highest x
         x1 = xValues[LOOKUPTABLE_MAX-2];
         y1 = yValues[LOOKUPTABLE_MAX-2];
         x2 = xValues[LOOKUPTABLE_MAX-1];
         y2 = yValues[LOOKUPTABLE_MAX-1];
+        cout << "INFO: correctValue - high value" << endl;
     }else {
         for (int i = 1; i < (LOOKUPTABLE_MAX); i++) { // everything between
             if (value < xValues[i]) {
@@ -46,6 +49,7 @@ double CorrectorLookupTable::correctValue(double value) {
                 y1 = yValues[i-1];
                 x2 = xValues[i];
                 y2 = yValues[i];
+                cout << "INFO: correctValue - interval " << i << " - " << (i+1) << endl;
                 break;
             }
         }
@@ -90,5 +94,7 @@ void CorrectorLookupTable::sortTable() {
         }
         
     } while (swapsDone > 0);
+    
+    cout << "INFO: sortTable - table sorted" << endl;
     
 }// DONE

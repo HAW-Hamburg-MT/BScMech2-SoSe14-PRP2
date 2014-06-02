@@ -19,6 +19,8 @@ DataReader::DataReader () {
 DataReader::~DataReader() {
     if (rawData != NULL) {
         delete [] rawData;
+    }else {
+        cout << "INFO: DataReader::~DataReader - no data to free" << endl;
     }
 }// DONE
 
@@ -26,7 +28,9 @@ DataReader::~DataReader() {
 void DataReader::readDataFrom(const char *FileName) {
     if (rawData == NULL) {
         rawData = (double *) calloc(MAX_DATA, sizeof(*rawData));
-    }else;
+    }else {
+        cout << "INFO: DataReader::readDataFrom - rawData already read" << endl;
+    }
     
     ifstream rawInput(FileName);
     for (int i = 0; i < MAX_DATA; i++) {
@@ -50,7 +54,7 @@ void DataReader::writeCorrectedDataToFile(const char* FileName) {
             outputFile << ptrCorrector->correctValue(rawData[i]) << endl;
         }
     }else {
-        cerr << "DataReader::writeCorrectedDataToFile - NULL pointer found" << endl;
+        cerr << "ERROR: DataReader::writeCorrectedDataToFile - NULL pointer found" << endl;
     }
     outputFile.close();
 }// DONE

@@ -13,7 +13,7 @@
 CorrectorLinear::CorrectorLinear() {
     a = 1;
     b = 0;
-    cout << "CorrectorLinear constructor (void)" << endl;
+    cout << "INFO: here is: CorrectorLinear constructor (void)" << endl;
     
 }// DONE
 
@@ -21,7 +21,7 @@ CorrectorLinear::CorrectorLinear() {
 CorrectorLinear::CorrectorLinear(double aSet, double bSet) {
     a = aSet;
     b = bSet;
-    cout << "CorrectorLinear constructor (set)" << endl;
+    cout << "INFO: here is: CorrectorLinear constructor (set)" << endl;
     
 }// DONE
 
