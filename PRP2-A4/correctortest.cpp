@@ -10,6 +10,6 @@ CorrectorTestSuite::CorrectorTestSuite() {
 }
 
 void CorrectorTestSuite::testAllCorrectors(){
-    TestCorrectorLinear linearTester();
-    TestCorrectorLookupTable lookupTableTester();
+    TestCorrectorLinear linearTester;           // IMPORTANT: without parentheses
+    TestCorrectorLookupTable lookupTableTester; // IMPORTANT: without parentheses
 }

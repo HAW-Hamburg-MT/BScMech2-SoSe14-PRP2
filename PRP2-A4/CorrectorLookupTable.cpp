@@ -24,7 +24,6 @@ CorrectorLookupTable::CorrectorLookupTable (double x[LOOKUPTABLE_MAX] , double y
 
 
 double CorrectorLookupTable::correctValue(double value) {
-    //double x1, y1, x2, y2;
     double x1 = 0;
     double y1 = 0;
     double x2 = 0;

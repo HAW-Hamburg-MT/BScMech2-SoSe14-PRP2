@@ -28,7 +28,7 @@ class CorrectorLookupTable : public Corrector{
         
 public:
     
-    // costrcutor: saves reference points and sorts them
+    // constructor: saves reference points and sorts them
     CorrectorLookupTable (double x[LOOKUPTABLE_MAX] , double y[LOOKUPTABLE_MAX] );
     
     // returns corrected value, uses calculate and chooses parameters
