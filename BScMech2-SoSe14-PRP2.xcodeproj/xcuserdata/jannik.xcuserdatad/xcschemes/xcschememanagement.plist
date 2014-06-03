@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>PRP2-A4 test.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>PRP2-A4.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -63,6 +68,11 @@
 			<true/>
 		</dict>
 		<key>2F854FD318FA81B20029EB14</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2F86627B193DFD8C007BE4B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
