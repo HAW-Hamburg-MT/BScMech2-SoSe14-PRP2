@@ -1,7 +1,7 @@
 /*
  * file: listDatabase.c
  * project: BScMech2-SoSe14-PRP2
- * version: 1.2 (14.05.2014 15:30)
+ * version: 1.2.1 (03.06.2014 12:30)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
  * - 0.3 many safety functions added
@@ -10,6 +10,7 @@
  * - 1.0 major changes
  * - 1.1 enhanced with prewNode pointer
  * - 1.2 addNode initializes data with given dataPtr
+ * - 1.2.1 bugfix at outputList
  *
  *
  * Created by Jannik Beyerstedt

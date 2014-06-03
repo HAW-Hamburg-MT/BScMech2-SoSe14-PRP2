@@ -22,25 +22,38 @@
 
 int main()
 {
-    
-    initializeList();
-    
-    addNodeAtEnd();
-    addNodeAtStart();
-    
-    int info = 50;
-    addDataToLastNode(1, &info);
-    Boolean info2 = TRUE;
-    addDataToLastNode(2, &info2);
-    info2 = FALSE;
-    addDataToLastNode(3, &info2);
-    info = 100;
-    addDataToLastNode(4, &info);
+    list_t itemsList = NULL;
+    listDataPtr dataStore = NULL;
     
     
-    time(getData(1, 1)); // save current time to 1st node, 1st cell
+    itemsList = initializeList();
     
-    outputList();
+    
+    dataStore = malloc(sizeof(struct listData));
+    
+    time(&dataStore->inputTime);
+    dataStore->height = TRUE;
+    dataStore->metal = FALSE;
+    time(&dataStore->outputTime);
+    
+    addNodeAtEnd(itemsList, dataStore);
+    dataStore = NULL;
+    
+    
+    
+    dataStore = malloc(sizeof(struct listData));
+    
+    time(&dataStore->inputTime);
+    dataStore->height = TRUE;
+    dataStore->metal = FALSE;
+    time(&dataStore->outputTime);
+    
+    addNodeAtEnd(itemsList, dataStore);
+    dataStore = NULL;
+    
+    
+    
+    outputList(itemsList);
     
     
     return 1;

@@ -1,7 +1,7 @@
 /*
  * file: stateMachine.c
  * project: BScMech2-SoSe14-PRP2
- * version: 2.2 (14.05.2014 15:30)
+ * version: 2.2.1 (03.06.2014 12:30)
  * - 0.1 first version
  * - 0.2 first and bugs fixed
  * - 0.3 initial logic enhanced, main must not initialize currentState
@@ -9,6 +9,7 @@
  * - 2.0 rewritten for PRP2-A3
  * - 2.1 changes for listDatabase v1.0 + minor bug-fixes
  * - 2.2 changes for listDatabase v1.2
+ * - 2.2.1 serious bug fixes for dataStore
  *
  *
  * Created by Jannik Beyerstedt
@@ -34,12 +35,12 @@ States savedState = INIT;
 time_t junctionOpenTime = 0;
 double junctionOpenDelay = 10; // seconds
 
+list_t itemsList = NULL;        // the list itself
+
+listDataPtr dataStore = NULL;   // temporary space for information
+
 
 void theMachine() {
-    
-    list_t itemsList = NULL;
-    
-    listDataPtr dataStore = NULL;
     
     
     switch (currentState) {
@@ -236,6 +237,7 @@ void theMachine() {
                 time(&dataStore->outputTime);
                 
                 addNodeAtEnd(itemsList, dataStore);     // add node and store data
+                dataStore = NULL;
                 
                 clearBitInOutput(MOTOR_R | JUNCTION | LED_Q2 | LIGHT_YE);
                 junctionOpenTime = 0;
@@ -259,6 +261,8 @@ void theMachine() {
                 time(&dataStore->outputTime);
                 
                 addNodeAtEnd(itemsList, dataStore);     // add node and store data
+                dataStore = NULL;
+                
                 
                 clearBitInOutput(MOTOR_R | LIGHT_YE);
                 setBitInOutput(LED_START);
@@ -309,6 +313,8 @@ void theMachine() {
                 currentState = E_STOP;
                 printf("new: E_STOP\n");
             }else if (hasTriggered(BTN_START)) {
+                outputList(itemsList);
+                
                 clearBitInOutput(ALL_VALUES);
                 setBitInOutput(LED_START);
                 

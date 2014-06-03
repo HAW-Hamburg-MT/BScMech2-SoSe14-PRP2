@@ -1,12 +1,16 @@
 /*
- * file: listDatabase.h
+ * file: listDatabase.c
  * project: BScMech2-SoSe14-PRP2
- * version: 0.5 (05.05.2014 14:00)
+ * version: 1.2.1 (03.06.2014 12:30)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
  * - 0.3 many safety functions added
  * - 0.4 outputList basic function
  * - 0.5 outputList ready with unique filename
+ * - 1.0 major changes
+ * - 1.1 enhanced with prewNode pointer
+ * - 1.2 addNode initializes data with given dataPtr
+ * - 1.2.1 bugfix at outputList
  *
  *
  * Created by Jannik Beyerstedt
@@ -14,46 +18,50 @@
  * Copyright: all code under creative commons license: CC BY-NC-SA 3.0
  *
  *
- * HAW Hamburg - Labor Programmieren 3
+ * HAW Hamburg - Labor Programmieren 2
  * festo conveyor belt system - exercise 3
  */
-
 
 #ifndef LISTDATABASE_H
 #define	LISTDATABASE_H
 
 
+#include <time.h>
+
+
 typedef enum {FALSE, TRUE} Boolean;
+
+typedef struct listMeta *list_t;        // type for your list
+
+struct listData {                       // the data stored
+    time_t inputTime;
+    Boolean height;
+    Boolean metal;
+    time_t outputTime;
+};
+typedef struct listData *listDataPtr;   // type for (a pointer to) some data
 
 
 /*
  * specifications:
- * list:    whole list (container with metadata)
- * node:    set of information, has a number of cells (starting with 1)
- * cell:    information storage point in a specific node (starting with 1)
- * cell 1:  time_t inputTime
- * cell 2:  Boolean height
- * cell 3:  Boolean metal
- * cell 4:  time_h outputTime
- * - information are transferred as void pointers
- * - you should do an expicit type transformation to get the "right" pointer type
+ * list_t:  type for whole list (container with metadata)
+ * node:    node of the list, points at information
+ *
  * - functions, that return a pointer will return NULL if an error occurred
- * - functions with type int will return 0 if an error occurred (e.g empty list), else 1
+ * - functions of type int will return 0 if an error occurred (e.g empty list), else 1
  */
 
-int initializeList ();      // starts a new list (with no nodes)
-int addNodeAtEnd ();        // adds empty node at end of list
-int addNodeAtStart ();      // adds empty node at start of list
+list_t initializeList ();           // starts a new list (with no nodes)
+int addNodeAtEnd (list_t list, listDataPtr dataPtr);     // adds node at end of list, initializes data with dataPtr
+int addNodeAtStart (list_t list, listDataPtr dataPtr);   // adds node at start of list, initializes data with dataPtr
 
-int addDataToLastNode (int cellNo, void *info);               // stores information (pass pointer) in "cell" (1-4)
-struct listNode * getNode (unsigned int nodeNo);              // returns pointer to node "nodeNo"
-void * getData (unsigned int nodeNo, unsigned int cellNo);    // returns pointer to a data cell
+listDataPtr getNodeData (list_t list, int nodeNo);
 
-int deleteFirst ();     // deletes first node
-int deleteLast ();      // deletes last node
-int deleteList ();      // deletes all node and then the list container itself
+int deleteFirst (list_t list);     // deletes first node
+int deleteLast (list_t list);      // deletes last node
+int deleteList (list_t list);      // deletes whole list, list pointer will be NULL
 
-int outputList();       // prints list on screen ans saves to CSV-file
+int outputList(list_t list);       // prints list on screen and saves to CSV-file
 
 
 #endif	/* LISTDATABASE_H */

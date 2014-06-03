@@ -1,7 +1,7 @@
 /*
  * file: listDatabase.c
  * project: BScMech2-SoSe14-PRP2
- * version: 1.2 (14.05.2014 15:30)
+ * version: 1.2.1 (03.06.2014 12:30)
  * - 0.1 first version
  * - 0.2 first "basic" list functions
  * - 0.3 many safety functions added
@@ -10,6 +10,7 @@
  * - 1.0 major changes
  * - 1.1 enhanced with prewNode pointer
  * - 1.2 addNode initializes data with given dataPtr
+ * - 1.2.1 bugfix at outputList and addNode
  *
  *
  * Created by Jannik Beyerstedt
@@ -32,7 +33,7 @@ struct listNode {
     struct listNode *nextNode;
     struct listNode *prewNode;
 };
-typedef struct listNode *listNodePtr; 
+typedef struct listNode *listNodePtr;
 
 struct listMeta {
     unsigned int length;
@@ -45,10 +46,10 @@ typedef struct listMeta *list_t;
 
 list_t initializeList () {
     list_t list = malloc(sizeof(struct listMeta));
-        list->length = 0;
-        list->firstNodePtr = NULL;
-        list->lastNodePtr = NULL;
-        return list;
+    list->length = 0;
+    list->firstNodePtr = NULL;
+    list->lastNodePtr = NULL;
+    return list;
 }
 
 
@@ -70,6 +71,8 @@ int addNodeAtEnd (list_t list, listDataPtr dataPtr) {
         }else {
             oldLastNode->nextNode = list->lastNodePtr;
             list->lastNodePtr->prewNode = oldLastNode;
+            list->lastNodePtr->nextNode = NULL;
+            list->lastNodePtr->dataPtr = dataPtr;
         }
         return 1;
     }// end list safety
@@ -94,6 +97,8 @@ int addNodeAtStart (list_t list, listDataPtr dataPtr) {
         }else {                         // add second+ element
             list->firstNodePtr->nextNode = newSecondNode;
             newSecondNode->prewNode = list->firstNodePtr;
+            list->firstNodePtr->nextNode = newSecondNode;
+            list->firstNodePtr->dataPtr = dataPtr;
         }
         return 1;
     }// end list safety
@@ -127,8 +132,8 @@ listDataPtr getNodeData (list_t list, int nodeNo) {
                 nodePtr = nodePtr->prewNode;
             }
             return nodePtr->dataPtr;
-        
-        
+            
+            
         }else {
             printf("ERROR: getNodeData: invalid nodePos number\n");
             return NULL;
@@ -265,10 +270,10 @@ int outputList (list_t list) {
                 fprintf(file, "%04i-%02i-%02i T%02i:%02i:%02i;",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
                 printf("%04i-%02i-%02i T%02i:%02i:%02i; ",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
                 
-                fprintf(file, "%i;", *(Boolean *) data->height);
-                printf("%i;               ", *(Boolean *) data->height);
-                fprintf(file, "%i;", *(Boolean *) data->metal);
-                printf("%i;           ", *(Boolean *) data->metal);
+                fprintf(file, "%i;", (Boolean) data->height);
+                printf("%i;               ", (Boolean) data->height);
+                fprintf(file, "%i;", (Boolean) data->metal);
+                printf("%i;           ", (Boolean) data->metal);
                 
                 tvar = localtime(&data->outputTime);
                 fprintf(file, "%04i-%02i-%02i T%02i:%02i:%02i;",tvar->tm_year+1900, tvar->tm_mon+1, tvar->tm_mday, tvar->tm_hour, tvar->tm_min, tvar->tm_sec);
