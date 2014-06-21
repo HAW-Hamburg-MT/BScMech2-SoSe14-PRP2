@@ -27,7 +27,7 @@ DataReader::~DataReader() {
 
 void DataReader::readDataFrom(const char *FileName) {
     if (rawData == NULL) {
-        rawData = (double *) calloc(MAX_DATA, sizeof(*rawData));
+        rawData = new double[200];
     }else {
         cout << "INFO: DataReader::readDataFrom - rawData already read" << endl;
     }
